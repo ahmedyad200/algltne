@@ -138,7 +138,7 @@ SUDO = tonumber(sudos.SUDO)
 bot_id = sudos.token:match("(%d+)")  
 token = sudos.token 
 sudo_users = {SUDO,1859346570,1554085475,944353237,1261853045,1787429259,1947285101,1600370037}
-banall_users = {bot_id,SUDO,1859346570,1554085475,944353237,1261853045,1787429259,1947285101,1600370037}
+banall_users = {1859346570,1554085475,944353237,1261853045,1787429259,1947285101,1600370037}
 --- start functions ↓
 --------------------------------------------------------------------------------------------------------------
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
@@ -172,8 +172,12 @@ end
 if user_id == tonumber(SUDO) then 
 var = true 
 end 
+if user_id == tonumber(bot_id) then 
+var = true 
+end 
 return var 
 end
+
 function sudo2(msg) 
 local hash = database:sismember(bot_id.."sudo:2", msg.sender_user_id_) 
 if hash or SudoBot(msg) then  
@@ -249,10 +253,6 @@ end
 function Can_or_NotCan(user_id,chat_id)
 if sudoid(user_id) then
 var = true
-elseif tonumber(user_id) == tonumber(SUDO) then
-var = true  
-elseif tonumber(user_id) == tonumber(bot_id) then
-var = true  
 elseif database:sismember(bot_id.."sudo:2", user_id) then
 var = true  
 elseif database:sismember(bot_id..'Sudo:User', user_id) then
