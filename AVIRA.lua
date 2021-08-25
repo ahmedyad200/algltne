@@ -2739,7 +2739,7 @@ end
 if text == 'المطور' or text == 'مطور' then 
 tdcli_function ({ID = "GetUser",user_id_ = SUDO},function(arg,result)  
 local msg_id = msg.id_/2097152/0.5 
-local Text = "DEV NAME -> ["..result.first_name_.."](tg://user?id="..SUDO..")\nDEV ID -> "..SUDO.."\nDEV USER -> @"..result.username_
+local Text = "DEV NAME -> ["..result.first_name_.."](tg://user?id="..SUDO..")\nDEV USER -> [@"..result.username_.."]\nDEV ID -> `"..SUDO.."`"
 keyboard = {}  
 keyboard.inline_keyboard = { 
 {{text = '❲'..result.first_name_..'❳',url="t.me/"..result.username_}}, 
