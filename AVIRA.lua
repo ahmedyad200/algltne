@@ -1153,18 +1153,6 @@ t = "☭ لا يوجد مطورين ثانويين"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-if text == 'المطور' or text == 'مطور' then 
-tdcli_function ({ID = "GetUser",user_id_ = SUDO},function(arg,result)  
-local msg_id = msg.id_/2097152/0.5 
-local Text = "DEV NAME -> ["..result.first_name_.."](tg://user?id="..SUDO..")\nDEV ID -> "..SUDO.."\nDEV USER -> @"..result.username_
-keyboard = {}  
-keyboard.inline_keyboard = { 
-{{text = '❲'..result.first_name_..'❳',url="t.me/"..result.username_}}, 
-{{text = 'اضف البوت الي مجموعتك 𖠕' ,url="t.me/"..dofile("./info.lua").botUserName.."?startgroup=start"}}, 
-} 
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/'..result.username_..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
-end,nil)
-end
 if text == 'الاحصائيات' and sudo2(msg) then 
 local Groups = database:scard(bot_id..'Chek:Groups')  
 local Users = database:scard(bot_id..'User_Bot')  
@@ -2748,18 +2736,16 @@ echo '╾╾╾╾╾╾╾╾╾╾╾╾╾╾╾╸\n☭✔{ مـده تـش�
 end
 
 
-if text == 'مطور' or text == 'المطور' then
-tdcli_function ({ID = "GetUser",user_id_ = SUDO},function(arg,result) 
-local msg_id = msg.id_/2097152/0.5
-local Text = [[
-اهو مطور البوت ياروحي..🥺💜
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{{text = '  ❨ '..result.first_name_..'  ❩ ',url="t.me/"..result.username_}},
-{{text = 'اضف البوت لمجموعتك 𖠕', url="http://t.me/"..sudos.UserName.."?startgroup=new"}},
-}
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/'..result.username_..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+if text == 'المطور' or text == 'مطور' then 
+tdcli_function ({ID = "GetUser",user_id_ = SUDO},function(arg,result)  
+local msg_id = msg.id_/2097152/0.5 
+local Text = "DEV NAME -> ["..result.first_name_.."](tg://user?id="..SUDO..")\nDEV ID -> "..SUDO.."\nDEV USER -> @"..result.username_
+keyboard = {}  
+keyboard.inline_keyboard = { 
+{{text = '❲'..result.first_name_..'❳',url="t.me/"..result.username_}}, 
+{{text = 'اضف البوت الي مجموعتك 𖠕' ,url="t.me/"..dofile("./info.lua").botUserName.."?startgroup=start"}}, 
+} 
+https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/'..result.username_..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end,nil)
 end
 
