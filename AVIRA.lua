@@ -1124,7 +1124,7 @@ end
 
 if text == 'تحديث السورس ' and sudo2(msg) then 
 os.execute('rm -rf AVIRA.lua')
-os.execute('wget https://raw.githubusercontent.com/devid100/vvvvvv/main/AVIRA.lua')
+os.execute('wget https://raw.githubusercontent.com/ahmedyad200/CLASSIK/master/AVIRA.lua')
 send(msg.chat_id_, msg.id_,'☭ تم تحديث السورس')
 dofile('AVIRA.lua')  
 end
@@ -2449,9 +2449,7 @@ end
 return false
 end
 os.execute('rm -rf AVIRA.lua')
-os.execute('wget https://raw.githubusercontent.com/devid100/vvvvvv/main/AVIRA.lua')
-os.execute('wget https://raw.githubusercontent.com/devid100/vvvvvv/main/library')
-os.execute('wget https://raw.githubusercontent.com/devid100/vvvvvv/main/File_Bot')
+os.execute('wget https://raw.githubusercontent.com/ahmedyad200/CLASSIK/master/AVIRA.lua')
 send(msg.chat_id_, msg.id_,' ☭ تم تحديث السورس')
 dofile('AVIRA.lua')  
 end
@@ -11859,14 +11857,10 @@ local AVIRA_Msg = {
 'اسمي  '..Namebot..' يوتكه🙈🍑',
 'انا '..Namebot..' إلى عمرو مهاب كابوس الكلاب ☭',
 }
-local Text = [[
- ]]..AVIRA_Msg[math.random(#AVIRA_Msg)]..[[ 
- 
-]]
-
- us = dofile("./info.lua").botUserName
- agwa = dofile("./info.lua").UserName
- agwa = agwa:gsub("%@", "")
+local Text = AVIRA_Msg[math.random(#AVIRA_Msg)]
+us = dofile("./info.lua").botUserName
+agwa = dofile("./info.lua").UserName
+agwa = agwa:gsub("%@", "")
 keyboard = {} 
 keyboard.inline_keyboard = {
 {{text = '  مطور البوت 𖠕 ',url="t.me/"..agwa}},
