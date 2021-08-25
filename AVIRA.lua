@@ -881,8 +881,7 @@ local keyboard = {
 {'اوامر الاذاعه','اوامر التفعيل','اوامر التعطيل'},
 {'الاحصائيات'},
 {'اوامر الجلب','اوامر المسح','اوامر الردود'},
-{'تحديث السورس'},
-{'معلومات السيرفر','الغاء'},
+{'الغاء'},
 }
 send_inline_key(msg.chat_id_,bl,keyboard)
 else
@@ -2718,7 +2717,7 @@ end,nil)
 end
 
 
-if text == 'معلومات السيرفر' or text == 'السيرفر' and sudo2(msg) then 
+if text == 'معلومات السيرفر' or text == 'السيرفر' and sudobot(msg) then 
 send(msg.chat_id_, msg.id_, io.popen([[
 linux_version=`lsb_release -ds`
 memUsedPrc=`free -m | awk 'NR==2{printf "%sMB/%sMB {%.2f%}\n", $3,$2,$3*100/$2 }'`
@@ -12046,29 +12045,7 @@ Text = ' ☭ هوا ابن الكلب دا الي ضافك😹← '..Name
 sendText(msg.chat_id_,Text,msg.id_/2097152/0.5,'md')
 end,nil)
 else
-send(msg.chat_id_, msg.id_,' ☭ انت دخلت عبر الرابط يوسخ 🌝') 
-end
-end,nil)
-else
-send(msg.chat_id_, msg.id_,' ☭ تم تعطيل امر  مين ضافني') 
-end
-end
-if text == 'مين ضافني هنا' then
-if not database:get(bot_id..'Added:Me'..msg.chat_id_) then
-tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da) 
-if da and da.status_.ID == "ChatMemberStatusCreator" then
-send(msg.chat_id_, msg.id_,' ☭ انت منشئ الجروب') 
-return false
-end
-local Added_Me = database:get(bot_id.."Who:Added:Me"..msg.chat_id_..':'..msg.sender_user_id_)
-if Added_Me then 
-tdcli_function ({ID = "GetUser",user_id_ = Added_Me},function(extra,result,success)
-local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
-Text = ' ☭ هوا ابن الكلب دا الي ضافك😹← '..Name
-sendText(msg.chat_id_,Text,msg.id_/2097152/0.5,'md')
-end,nil)
-else
-send(msg.chat_id_, msg.id_,' ☭ انت دخلت عبر الرابط يوسخ 🌝') 
+send(msg.chat_id_, msg.id_,' ☭ انت دخلت عبر الرابط') 
 end
 end,nil)
 else
