@@ -3178,26 +3178,24 @@ https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. ms
 end
 
 if text == 'روايات' or text == 'الروايات' or text == 'ررويات' then
-local Text = [[
-❈The list of novels.
-]]
+local Text = '❈The list of novels.'
+local msg_id = msg.id_/2097152/0.5
 keyboard = {}
 keyboard.inline_keyboard = {
-{{text = '📖رواية "أرض زيكولا"',url="https://t.me/SOURCE_SP/9"}},
-{{text = '📖موسوعة الظلام رعب وما شابه ذلك', url="https://t.me/SOURCE_SP/3"}},
-{{text = '📖رواية "الشفق الجزء الأول"', url="https://t.me/SOURCE_SP/5"}},
-{{text = '📖رواية "المخلوق', url="https://t.me/SOURCE_SP/6"}},
-{{text = '📖رواية "بعد النسيان"', url="https://t.me/SOURCE_SP/7"}},
-{{text = '📖كتاب في حضرة الجن', url="https://t.me/https://t.me/SOURCE_SP/8"}},
-{{text = '📖رواية "واختفى كل شئ"', url="https://t.me/SOURCE_SP/10"}},
-{{text = '📖رواية "نيلوفر أسود"', url="https://t.me/SOURCE_SP/11"}},
-{{text = '📖رواية"جثة في الفندق"', url="https://t.me/SOURCE_SP/12"}},
-{{text = '📖رواية "في القطار السريع"', url="https://t.me/SOURCE_SP/13"}},
-{{text = '📖لقاء مع كاتب رعب"', url="https://t.me/SOURCE_SP/14"}},
-{{text = '📖رواية"الإنسان الأخير""', url="https://t.me/SOURCE_SP/16"}},
-{{text = '📖رواية" مقبرة الحيوانات""', url="https://t.me/SOURCE_SP/15"}},
+{{text = '📖 أرض زيكولا',url="https://t.me/SOURCE_SP/9"}},
+{{text = '📖 الظلام رعب وما شابه ذلك', url="https://t.me/SOURCE_SP/3"}},
+{{text = '📖 الشفق الجزء الأول', url="https://t.me/SOURCE_SP/5"}},
+{{text = '📖 المخلوق', url="https://t.me/SOURCE_SP/6"}},
+{{text = '📖 بعد النسيان', url="https://t.me/SOURCE_SP/7"}},
+{{text = '📖 في حضرة الجن', url="https://t.me/https://t.me/SOURCE_SP/8"}},
+{{text = '📖 واختفى كل شئ', url="https://t.me/SOURCE_SP/10"}},
+{{text = '📖 نيلوفر أسود', url="https://t.me/SOURCE_SP/11"}},
+{{text = '📖 جثة في الفندق', url="https://t.me/SOURCE_SP/12"}},
+{{text = '📖 في القطار السريع', url="https://t.me/SOURCE_SP/13"}},
+{{text = '📖 مع كاتب رعب', url="https://t.me/SOURCE_SP/14"}},
+{{text = '📖 الإنسان الأخير', url="https://t.me/SOURCE_SP/16"}},
+{{text = '📖 مقبرة الحيوانات', url="https://t.me/SOURCE_SP/15"}},
 }
-local msg_id = msg.id_/2097152/0.5  
 https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))  
 end
 
