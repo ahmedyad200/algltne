@@ -664,7 +664,7 @@ end
 function Addmp3(msg,chat,kkl,ffrr)
 local eer = json:decode(https.request('https://api.telegram.org/bot'.. token..'/getfile?file_id='..kkl)) 
 download_to_file('https://api.telegram.org/file/bot'..token..'/'..eer.result.file_path,ffrr) 
-sendAudio(msg.chat_id_,msg.id_,'./'..ffrr,"🎼 ¹𝐀𝐕𝐈𝐑𝐀¹")  
+sendAudio(msg.chat_id_,msg.id_,'./'..ffrr,"🎼 𝐒𝐎𝐔𝐑𝐂𝐄 𝐂𝐋𝐀𝐒𝐒𝐈𝐊")  
 os.execute('rm -rf ./'..ffrr) 
 end
 function Addsticker(msg,chat,Sd,rre)
@@ -1669,7 +1669,7 @@ send(msg.chat_id_, msg.id_,'['..t..']')
 end,nil) 
 end 
 end
------------------------------------------------¹𝐀𝐕𝐈𝐑𝐀¹---------------------------------------------------------------
+-----------------------------------------------𝐒𝐎𝐔𝐑𝐂𝐄 𝐂𝐋𝐀𝐒𝐒𝐈𝐊---------------------------------------------------------------
 if msg.content_.photo_ then  
 if database:get(bot_id..'Change:Chat:Photo'..msg.chat_id_..':'..msg.sender_user_id_) then 
 if msg.content_.photo_.sizes_[3] then  
@@ -1692,7 +1692,7 @@ end, nil)
 database:del(bot_id..'Change:Chat:Photo'..msg.chat_id_..':'..msg.sender_user_id_) 
 end   
 end
------------------------------------------------¹𝐀𝐕𝐈𝐑𝐀¹---------------------------------------------------------------
+-----------------------------------------------𝐒𝐎𝐔𝐑𝐂𝐄 𝐂𝐋𝐀𝐒𝐒𝐈𝐊---------------------------------------------------------------
 if database:get(bot_id.."Set:Description" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then  
 if text == 'الغاء' then 
 send(msg.chat_id_, msg.id_," ☭ تم الغاء وضع الوصف")
@@ -1704,7 +1704,7 @@ https.request('https://api.telegram.org/bot'..token..'/setChatDescription?chat_i
 send(msg.chat_id_, msg.id_,' ☭ تم تغيير وصف الجروب')
 return false  
 end 
------------------------------------------------¹𝐀𝐕𝐈𝐑𝐀¹---------------------------------------------------------------
+-----------------------------------------------𝐒𝐎𝐔𝐑𝐂𝐄 𝐂𝐋𝐀𝐒𝐒𝐈𝐊---------------------------------------------------------------
 if database:get(bot_id.."Welcome:Group" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then 
 if text == 'الغاء' then 
 send(msg.chat_id_, msg.id_," ☭ تم الغاء حفظ الترحيب")
@@ -3546,6 +3546,24 @@ Text = '\n☭ بالتاكيد تم تعطيل نسبه جمالي'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
+if text == 'تفعيل قول' and CoSu(msg) then   
+if database:get(bot_id..'kolllllllll'..msg.chat_id_) then
+Text = ' ☭ تم تفعيل امر قول'
+database:del(bot_id..'kolllllllll'..msg.chat_id_)  
+else
+Text = ' ☭ بالتاكيد تم تفعيل قول'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تعطيل قول' and CoSu(msg) then  
+if not database:get(bot_id..'kolllllllll'..msg.chat_id_) then
+database:set(bot_id..'kolllllllll'..msg.chat_id_,true)  
+Text = '\n☭ تم تعطيل امر قول'
+else
+Text = '\n☭ بالتاكيد تم تعطيل قول'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
 if text == 'تعطيل غنيلي' and CoSu(msg) then  
 if not database:get(bot_id..'sing:for:me'..msg.chat_id_) then
 database:set(bot_id..'sing:for:me'..msg.chat_id_,true)  
@@ -5354,7 +5372,7 @@ send(msg.chat_id_, msg.id_, texts)
 end
 if text == ("المدراء") and Constructor(msg) then
 local list = database:smembers(bot_id..'Manager'..msg.chat_id_)
-t = "\n ☭ قائمة المدراء \n☭━━━━━━𝐀𝐕𝐈𝐑𝐀━━━━━━☭\n"
+t = "\n ☭ قائمة المدراء \n╾╾╾╾╾╾╾╾╾╾╾╾╾╾╾╸\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -9160,7 +9178,7 @@ local text =
 ' }\n'..' ☭  الايدي ← { '..idgp..
 ' }\n'..' ☭  الايدي بالصوره ← { '..idph..
 ' }\n'..' ☭  الرفع ← { '..setadd..
-' }\n'..' ☭  الحظر ← { '..banm..' }\n\n╾╾╾╾╾╾╾╾╾╾╾╾╾╾╾╸\n ☭ قناة سورس كلاسيك ↓\n [ ¹𝐀𝐕𝐈𝐑𝐀¹](t.me/XXx_cLASsIC_xXX) \n'
+' }\n'..' ☭  الحظر ← { '..banm..' }\n\n╾╾╾╾╾╾╾╾╾╾╾╾╾╾╾╸\n ☭ قناة سورس كلاسيك ↓\n [ 𝐒𝐎𝐔𝐑𝐂𝐄 𝐂𝐋𝐀𝐒𝐒𝐈𝐊](t.me/XXx_cLASsIC_xXX) \n'
 send(msg.chat_id_, msg.id_,text)     
 end
 if text ==('تثبيت') and msg.reply_to_message_id_ ~= 0 and Mod(msg) then  
@@ -10849,7 +10867,7 @@ local video = database:get(bot_id.."Add:Rd:Manager:Video"..text..msg.chat_id_)
 local document = database:get(bot_id.."Add:Rd:Manager:File"..text..msg.chat_id_)
 local audio = database:get(bot_id.."Add:Rd:Manager:Audio"..text..msg.chat_id_)
 ------------------------------------------------------------------------
-if text and text:match("^قول (.*)$") then
+if text and text:match("^قول (.*)$") and not database:get(bot_id.."kolllllllll"..msg.chat_id_) then
 local Textxt = text:match("^قول (.*)$")
 send(msg.chat_id_, msg.id_, '['..Textxt..']')
 end
@@ -10861,7 +10879,7 @@ if audios.Info == true then
 local Text ='☭تم اختيار المقطع الصوتي لك'
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '¹𝐀𝐕𝐈𝐑𝐀¹.',url="t.me/XXx_cLASsIC_xXX"}},
+{{text = '𝐒𝐎𝐔𝐑𝐂𝐄 𝐂𝐋𝐀𝐒𝐒𝐈𝐊.',url="t.me/XXx_cLASsIC_xXX"}},
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice='..URL.escape(audios.info)..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
@@ -11331,7 +11349,7 @@ Text = '\n ☭ بالتاكيد تم تعطيل الايدي'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تفعيل ايدي صوره' and Manager(msg) then   
+if text == 'تفعيل ايدي صوره' or text == 'تفعيل ايدي بالصوره' or text == 'تعطيل الايدي صوره' or text == 'تعطيل الايدي بالصوره' and Manager(msg) then   
 if database:get(bot_id..'Bot:Id:Photo'..msg.chat_id_)  then
 database:del(bot_id..'Bot:Id:Photo'..msg.chat_id_) 
 Text = '\n ☭ تم تفعيل الايدي بالصور' 
@@ -11340,7 +11358,7 @@ Text = '\n ☭ بالتاكيد تم تفعيل الايدي بالصوره'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل ايدي صوره' and Manager(msg) then  
+if text == 'تعطيل ايدي صوره' or text == 'تعطيل ايدي بالصوره' or text == 'تعطيل الايدي صوره' or text == 'تعطيل الايدي بالصوره' and Manager(msg) then  
 if not database:get(bot_id..'Bot:Id:Photo'..msg.chat_id_)  then
 database:set(bot_id..'Bot:Id:Photo'..msg.chat_id_,true) 
 Text = '\n ☭ تم تعطيل الايدي بالصوره' 
@@ -13427,7 +13445,7 @@ else
 if result.status_.ID == "UserStatusEmpty" and result.profile_photo_ == false then
 send(msg.chat_id_, msg.id_,'[\n🇧🇱-𝒖𝒔𝒆𝒓   '..username..'\n 🇧🇱-𝒎𝒔𝒈𝒔  '..Msguser..'\n 🇧🇱-𝒔𝒕𝒂𝒕𝒔  '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n 🇧🇱-𝒊𝒅 '..msg.sender_user_id_..'\n🇧🇱- 𝗖𝗛  @XXx_cLASsIC_xXX\n')
 else
-send(msg.chat_id_, msg.id_, '\n ☭ الصوره ~⪼ ليس لديك صور في حسابك'..'[\n🇧🇱-𝒖𝒔𝒆𝒓  '..username..'\n 🇧🇱-𝒎𝒔𝒈𝒔  '..Msguser..'\n 🇧🇱-𝒊𝒅 '..msg.sender_user_id_..'\n🇧🇱- 𝗖𝗛 @XXx_cLASsIC_xXX\n')
+send(msg.chat_id_, msg.id_, '\n ☭ الصوره ~⪼ ليس لديك صور في حسابك'..'\n🇧🇱-𝒖𝒔𝒆𝒓  ['..username..']\n 🇧🇱-𝒎𝒔𝒈𝒔  '..Msguser..'\n 🇧🇱-𝒊𝒅 '..msg.sender_user_id_..'\n🇧🇱- 𝗖𝗛 @XXx_cLASsIC_xXX\n')
 end 
 end
 end
