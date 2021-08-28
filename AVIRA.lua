@@ -1231,27 +1231,27 @@ end
 send(msg.chat_id_, msg.id_, t)
 return false
 end
-if text=="اذاعه خاص " and msg.reply_to_message_id_ == 0 and sudo2(msg) then 
+if text=="اذاعه خاص " and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 database:setex(bot_id.."Send:Bc:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
 send(msg.chat_id_, msg.id_," ☭ ارسل الان اذاعتك؟ \n ☭ للخروج ارسل الغاء ")
 return false
 end 
-if text=="اذاعه " and msg.reply_to_message_id_ == 0 and sudo2(msg) then 
+if text=="اذاعه " and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 database:setex(bot_id.."Send:Bc:Grops" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
 send(msg.chat_id_, msg.id_," ☭ ارسل الان اذاعتك؟ \n ☭ للخروج ارسل الغاء ")
 return false
 end  
-if text=="اذاعه بالتثبيت" and msg.reply_to_message_id_ == 0 and sudo2(msg) then 
+if text=="اذاعه بالتثبيت" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 database:setex(bot_id.."Bc:Grops:Pin" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
 send(msg.chat_id_, msg.id_," ☭ ارسل الان اذاعتك؟ \n ☭ للخروج ارسل الغاء ")
 return false
 end 
-if text=="اذاعه بالتوجيه " and msg.reply_to_message_id_ == 0  and sudo2(msg) then 
+if text=="اذاعه بالتوجيه " and msg.reply_to_message_id_ == 0  and SudoBot(msg) then 
 database:setex(bot_id.."Send:Fwd:Grops" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
 send(msg.chat_id_, msg.id_," ☭ ارسل لي التوجيه الان")
 return false
 end 
-if text=="اذاعه بالتوجيه خاص " and msg.reply_to_message_id_ == 0  and sudo2(msg) then 
+if text=="اذاعه بالتوجيه خاص " and msg.reply_to_message_id_ == 0  and SudoBot(msg) then 
 database:setex(bot_id.."Send:Fwd:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
 send(msg.chat_id_, msg.id_," ☭ ارسل لي التوجيه الان")
 return false
@@ -2264,6 +2264,32 @@ end
 end
 end
 
+if msg.content_.ID == "MessageChatDeleteMember" and tonumber(msg.content_.user_.id_) == tonumber(bot_id) then 
+database:srem(bot_id.."Chek:Groups", msg.chat_id_) 
+tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
+tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,dp) 
+local Name1 = result.first_name_
+local Name1 = Name1:gsub('"',"") 
+local Name1 = Name1:gsub("'","") 
+local Name1 = Name1:gsub("`","") 
+local Name1 = Name1:gsub("*","") 
+local Name1 = Name1:gsub("{","") 
+local Name1 = Name1:gsub("}","") 
+local Name = '['..Name1..'](tg://user?id='..result.id_..')'
+local NameChat = dp.title_
+local NameChat = NameChat:gsub('"',"") 
+local NameChat = NameChat:gsub("'","") 
+local NameChat = NameChat:gsub("`","") 
+local NameChat = NameChat:gsub("*","") 
+local NameChat = NameChat:gsub("{","") 
+local NameChat = NameChat:gsub("}","") 
+if not SudoBot(msg) then
+sendText(SUDO,"☭ تم طرد البوت من جروب \n\n☭ بواسطة العرص ابن الشرموطه د {"..Name.."}\n☭ اسم الجروب {"..NameChat.."}\n☭ ايدي الجروب {`"..msg.chat_id_.."`}\nروح نيك كسمو خلي يدهلني تاني عشن في نسوان ",0,'md')
+end
+end,nil)
+end,nil)
+end
+
 if text == 'تفعيل' and Sudo(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local XXx_cLASsIC_xXX = database:get(bot_id..'text:ch:user')
@@ -2306,7 +2332,7 @@ Text = ' ☭ تم تفعيل كروب جديده\n'..
 '\n ☭ اسم الجروب {['..NameChat..']}'..
 '\n ☭ عدد اعضاء الجروب *{'..NumMember..'}*'..
 '\n ☭ الرابط {['..LinkGp..']}'
-if not sudo2(msg) then
+if not SudoBot(msg) then
 sendText(SUDO,Text,0,'md')
 end
 end
@@ -2346,7 +2372,7 @@ Text = '\nتم تعطيل الجروب  ☭ '..
 '\n ☭ ايدي الجروب {'..IdChat..'}'..
 '\n ☭ اسم الجروب {['..NameChat..']}'..
 '\n ☭ الرابط {['..LinkGp..']}'
-if not sudo2(msg) then
+if not SudoBot(msg) then
 sendText(SUDO,Text,0,'md')
 end
 end
@@ -2406,7 +2432,7 @@ Text = ' ☭ تم تفعيل كروب جديده\n'..
 '\n ☭ عدد اعضاء الجروب *{'..NumMember..'}*'..
 '\n ☭ اسم الجروب {['..NameChat..']}'..
 '\n ☭ الرابط {['..LinkGp..']}'
-if not sudo2(msg) then
+if not SudoBot(msg) then
 sendText(SUDO,Text,0,'md')
 end
 end
@@ -4463,7 +4489,7 @@ end
 send(msg.chat_id_, msg.id_, t)
 return false
 end
-if text == ("حظر عام") and msg.reply_to_message_id_ and sudo2(msg) then
+if text == ("حظر عام") and msg.reply_to_message_id_ and SudoBot(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local XXx_cLASsIC_xXX = database:get(bot_id..'text:ch:user')
 if XXx_cLASsIC_xXX then
@@ -4490,7 +4516,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^حظر عام @(.*)$")  and sudo2(msg) then
+if text and text:match("^حظر عام @(.*)$") and SudoBot(msg) then
 local username = text:match("^حظر عام @(.*)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local Groups = database:scard(bot_id..'Chek:Groups')  
@@ -4524,7 +4550,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text and text:match("^حظر عام (%d+)$") and sudo2(msg) then
+if text and text:match("^حظر عام (%d+)$") and SudoBot(msg) then
 local userid = text:match("^حظر عام (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local Groups = database:scard(bot_id..'Chek:Groups')  
@@ -4553,7 +4579,7 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
 end
-if text == ("كتم عام") and msg.reply_to_message_id_ and sudo2(msg) then
+if text == ("كتم عام") and msg.reply_to_message_id_ and SudoBot(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local Groups = database:scard(bot_id..'Chek:Groups')  
 local XXx_cLASsIC_xXX = database:get(bot_id..'text:ch:user')
@@ -4580,7 +4606,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^كتم عام @(.*)$")  and sudo2(msg) then
+if text and text:match("^كتم عام @(.*)$") and SudoBot(msg) then
 local username = text:match("^كتم عام @(.*)$") 
 local Groups = database:scard(bot_id..'Chek:Groups')  
 if AddChannel(msg.sender_user_id_) == false then
@@ -4614,7 +4640,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text and text:match("^كتم عام (%d+)$") and sudo2(msg) then
+if text and text:match("^كتم عام (%d+)$") and SudoBot(msg) then
 local userid = text:match("^كتم عام (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local Groups = database:scard(bot_id..'Chek:Groups')  
@@ -4643,7 +4669,7 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
 end
-if text == ("الغاء العام") and msg.reply_to_message_id_ and sudo2(msg) then
+if text == ("الغاء العام") and msg.reply_to_message_id_ and SudoBot(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local XXx_cLASsIC_xXX = database:get(bot_id..'text:ch:user')
 if XXx_cLASsIC_xXX then
@@ -4665,7 +4691,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^الغاء العام @(.*)$") and sudo2(msg) then
+if text and text:match("^الغاء العام @(.*)$") and SudoBot(msg) then
 local username = text:match("^الغاء العام @(.*)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local XXx_cLASsIC_xXX = database:get(bot_id..'text:ch:user')
@@ -4691,7 +4717,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text and text:match("^الغاء العام (%d+)$") and sudo2(msg) then
+if text and text:match("^الغاء العام (%d+)$") and SudoBot(msg) then
 local userid = text:match("^الغاء العام (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local XXx_cLASsIC_xXX = database:get(bot_id..'text:ch:user')
@@ -10343,7 +10369,7 @@ return false
 end
 send(msg.chat_id_, msg.id_,' ☭ عدد رسائلك ← { '..database:get(bot_id..'Msg_User'..msg.chat_id_..':'..msg.sender_user_id_)..'}' ) 
 end 
-if text == 'تفعيل الاذاعه' and sudo2(msg) then  
+if text == 'تفعيل الاذاعه' and SudoBot(msg) then  
 if database:get(bot_id..'Bc:Bots') then
 database:del(bot_id..'Bc:Bots') 
 Text = '\n ☭ تم تفعيل الاذاعه' 
@@ -10352,7 +10378,7 @@ Text = '\n ☭ بالتاكيد تم تفعيل الاذاعه'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل الاذاعه' and sudo2(msg) then  
+if text == 'تعطيل الاذاعه' and SudoBot(msg) then  
 if not database:get(bot_id..'Bc:Bots') then
 database:set(bot_id..'Bc:Bots',true) 
 Text = '\n ☭ تم تعطيل الاذاعه' 
@@ -10530,7 +10556,7 @@ end
 
 
 
-if text=="اذاعه خاص" and msg.reply_to_message_id_ == 0 and Sudo(msg) then 
+if text=="اذاعه خاص" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 if database:get(bot_id..'Bc:Bots') and not sudo2(msg) then 
 send(msg.chat_id_, msg.id_,' ☭ الاذاعه معطله من قبل المطور الاساسي')
 return false
@@ -10548,7 +10574,7 @@ database:setex(bot_id.."Send:Bc:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id
 send(msg.chat_id_, msg.id_," ☭ ارسل الان اذاعتك \n ☭ للخروج ارسل الغاء") 
 return false
 end 
-if text=="اذاعه" and msg.reply_to_message_id_ == 0 and Sudo(msg) then 
+if text=="اذاعه" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 if database:get(bot_id..'Bc:Bots') and not sudo2(msg) then 
 send(msg.chat_id_, msg.id_,' ☭ الاذاعه معطله من قبل المطور الاساسي')
 return false
@@ -10566,7 +10592,7 @@ database:setex(bot_id.."Send:Bc:Grops" .. msg.chat_id_ .. ":" .. msg.sender_user
 send(msg.chat_id_, msg.id_," ☭ ارسل الان اذاعتك \n ☭ للخروج ارسل الغاء ") 
 return false
 end  
-if text=="اذاعه بالتوجيه" and msg.reply_to_message_id_ == 0  and Sudo(msg) then 
+if text=="اذاعه بالتوجيه" and msg.reply_to_message_id_ == 0  and SudoBot(msg) then 
 if database:get(bot_id..'Bc:Bots') and not sudo2(msg) then 
 send(msg.chat_id_, msg.id_,' ☭ الاذاعه معطله من قبل المطور الاساسي')
 return false
@@ -10584,7 +10610,7 @@ database:setex(bot_id.."Send:Fwd:Grops" .. msg.chat_id_ .. ":" .. msg.sender_use
 send(msg.chat_id_, msg.id_," ☭ ارسل لي التوجيه الان") 
 return false
 end 
-if text=="اذاعه بالتوجيه خاص" and msg.reply_to_message_id_ == 0  and Sudo(msg) then 
+if text=="اذاعه بالتوجيه خاص" and msg.reply_to_message_id_ == 0  and SudoBot(msg) then 
 if database:get(bot_id..'Bc:Bots') and not sudo2(msg) then 
 send(msg.chat_id_, msg.id_,' ☭  الاذاعه معطله من قبل المطور الاساسي')
 return false
