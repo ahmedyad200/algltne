@@ -643,7 +643,7 @@ t = t..'}}'
 local File = io.open('./'..bot_id..'.json', "w")
 File:write(t)
 File:close()
-sendDocument(msg.chat_id_, msg.id_,0, 1, nil, './'..bot_id..'.json', '- عدد كروبات التي في البوت { '..#list..'}')
+sendDocument(msg.chat_id_, msg.id_,0, 1, nil, './'..bot_id..'.json', '- عدد جروبات التي في البوت { '..#list..'}')
 end
 function download_to_file(url, file_path) 
 local respbody = {} 
@@ -870,7 +870,7 @@ sendSticker(v, 0, msg.content_.sticker_.sticker_.persistent_id_)
 database:set(bot_id..'Msg:Pin:Chat'..v,msg.content_.sticker_.sticker_.persistent_id_) 
 end 
 end
-send(msg.chat_id_, msg.id_," ☭ تمت الاذاعه الى *~ "..#list.." ~* كروب ")
+send(msg.chat_id_, msg.id_," ☭ تمت الاذاعه الى *~ "..#list.." ~* جروب ")
 database:del(bot_id.."Bc:Grops:Pin" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 return false
 end
@@ -890,9 +890,12 @@ if sudo2(msg) then
 local bl = '☭ مرحبا بك في اوامر المطور الجاهزه \n☭ [قناة السورس](t.me/XXx_cLASsIC_xXX)'
 local keyboard = {
 {'ضع اسم للبوت'},
-{'اوامر الاذاعه','اوامر التفعيل','اوامر التعطيل'},
+{'اوامر الاذاعه','اوامر التعطيل'},
+{'اوامر التفعيل'}
 {'الاحصائيات'},
-{'اوامر الجلب','اوامر المسح','اوامر الردود'},
+{'اوامر الجلب','اوامر الردود'},
+{'اوامر المسح'}
+{'تحديث السورس'}
 {'الغاء'},
 }
 send_inline_key(msg.chat_id_,bl,keyboard)
@@ -1367,21 +1370,21 @@ w = w + 1
 end
 if #group == i then 
 if (w + q) == 0 then
-send(msg.chat_id_, msg.id_,'☭ لا يوجد كروبات وهميه في البوت\n')   
+send(msg.chat_id_, msg.id_,'☭ لا يوجد جروبات وهميه في البوت\n')   
 else
 local AVIRA = (w + q)
 local sendok = #group - AVIRA
 if q == 0 then
 AVIRA = ''
 else
-AVIRA = '\n☭ تم ازالة ← { '..q..' } كروبات من البوت'
+AVIRA = '\n☭ تم ازالة ← { '..q..' } جروبات من البوت'
 end
 if w == 0 then
 AVIRAk = ''
 else
-AVIRAk = '\n☭ تم ازالة ← {'..w..'} كروب لان البوت عضو'
+AVIRAk = '\n☭ تم ازالة ← {'..w..'} جروب لان البوت عضو'
 end
-send(msg.chat_id_, msg.id_,'☭  عدد الجروبات الان ← { '..#group..' }'..AVIRAk..''..AVIRA..'\n☭  الان عدد الجروبات الحقيقي ← { '..sendok..' } كروبات\n')   
+send(msg.chat_id_, msg.id_,'☭  عدد الجروبات الان ← { '..#group..' }'..AVIRAk..''..AVIRA..'\n☭  الان عدد الجروبات الحقيقي ← { '..sendok..' } جروبات\n')   
 end
 end
 end,nil)
@@ -1578,7 +1581,7 @@ for k,v in pairs(list) do
 sendSticker(v, 0, 0, 1, nil, msg.content_.sticker_.sticker_.persistent_id_)   
 end 
 end
-send(msg.chat_id_, msg.id_," ☭ تمت الاذاعه الى >>{"..#list.."} كروب في البوت ")
+send(msg.chat_id_, msg.id_," ☭ تمت الاذاعه الى >>{"..#list.."} جروب في البوت ")
 database:del(bot_id.."Send:Bc:Grops" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 end
 
@@ -1598,7 +1601,7 @@ message_ids_ = {[0] = msg.id_},
 disable_notification_ = 0,
 from_background_ = 1},function(a,t) end,nil) 
 end   
-send(msg.chat_id_, msg.id_," ☭ تمت الاذاعه الى >>{"..#list.."} كروبات في البوت ")
+send(msg.chat_id_, msg.id_," ☭ تمت الاذاعه الى >>{"..#list.."} جروبات في البوت ")
 database:del(bot_id.."Send:Fwd:Grops" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 end 
 end
@@ -1640,7 +1643,7 @@ if data and data.type_ and data.type_.ID and data.type_.ID == 'PrivateChatInfo' 
 send(msg.chat_id_, msg.id_, ' ☭ عذا لا يمكنك وضع معرف حسابات في الاشتراك ')
 return false  end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.is_supergroup_ == true then
-send(msg.chat_id_, msg.id_,' ☭ عذا لا يمكنك وضع معرف كروب بالاشتراك ')
+send(msg.chat_id_, msg.id_,' ☭ عذا لا يمكنك وضع معرف جروب بالاشتراك ')
 return false  end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.is_supergroup_ == false then
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.ID and data.type_.channel_.status_.ID == 'ChatMemberStatusEditor' then
@@ -2330,8 +2333,8 @@ LinkGp = linkgpp.result
 else
 LinkGp = 'لا يوجد'
 end
-Text = ' ☭ تم تفعيل كروب جديده\n'..
-'\n ☭ بواسطة {'..Name..'}'..
+Text = ' ☭ تم تفعيل جروب جديده\n'..
+'\n ☭ بواسطة {['..Name..']}'..
 '\n ☭ ايدي الجروب {'..IdChat..'}'..
 '\n ☭ اسم الجروب {['..NameChat..']}'..
 '\n ☭ عدد اعضاء الجروب *{'..NumMember..'}*'..
@@ -2372,7 +2375,7 @@ else
 LinkGp = 'لا يوجد'
 end
 Text = '\nتم تعطيل الجروب  ☭ '..
-'\n ☭ بواسطة {'..Name..'}'..
+'\n ☭ بواسطة {['..Name..']}'..
 '\n ☭ ايدي الجروب {'..IdChat..'}'..
 '\n ☭ اسم الجروب {['..NameChat..']}'..
 '\n ☭ الرابط {['..LinkGp..']}'
@@ -2429,8 +2432,8 @@ LinkGp = linkgpp.result
 else
 LinkGp = 'لا يوجد'
 end
-Text = ' ☭ تم تفعيل كروب جديده\n'..
-'\n ☭ بواسطة {'..Name..'}'..
+Text = ' ☭ تم تفعيل جروب جديده\n'..
+'\n ☭ بواسطة {['..Name..']}'..
 '\n ☭ موقعه في الجروب {'..AddPy..'}' ..
 '\n ☭ ايدي الجروب {'..IdChat..'}'..
 '\n ☭ عدد اعضاء الجروب *{'..NumMember..'}*'..
@@ -9778,7 +9781,7 @@ local GetWelcomeGroup = database:get(bot_id..'Get:Welcome:Group'..msg.chat_id_)
 if GetWelcomeGroup then 
 GetWelcome = GetWelcomeGroup
 else 
-GetWelcome = ' ☭ لم يتم تعيين ترحيب للكروب'
+GetWelcome = ' ☭ لم يتم تعيين ترحيب للجروب'
 end 
 send(msg.chat_id_, msg.id_,'['..GetWelcome..']') 
 return false  
@@ -13971,21 +13974,21 @@ w = w + 1
 end
 if #group == i then 
 if (w + q) == 0 then
-send(msg.chat_id_, msg.id_,' ☭  لا يوجد كروبات وهميه في البوت\n')   
+send(msg.chat_id_, msg.id_,' ☭  لا يوجد جروبات وهميه في البوت\n')   
 else
 local AVIRA = (w + q)
 local sendok = #group - AVIRA
 if q == 0 then
 AVIRA = ''
 else
-AVIRA = '\n- تم ازالة ← { '..q..' } كروبات من البوت'
+AVIRA = '\n- تم ازالة ← { '..q..' } جروبات من البوت'
 end
 if w == 0 then
 AVIRAk = ''
 else
-AVIRAk = '\n- تم ازالة ← {'..w..'} كروب لان البوت عضو'
+AVIRAk = '\n- تم ازالة ← {'..w..'} جروب لان البوت عضو'
 end
-send(msg.chat_id_, msg.id_,' ☭ عدد الجروبات الان ← { '..#group..' }'..AVIRAk..''..AVIRA..'\n*- الان عدد الجروبات الحقيقي ← { '..sendok..' } كروبات\n')   
+send(msg.chat_id_, msg.id_,' ☭ عدد الجروبات الان ← { '..#group..' }'..AVIRAk..''..AVIRA..'\n*- الان عدد الجروبات الحقيقي ← { '..sendok..' } جروبات\n')   
 end
 end
 end,nil)
