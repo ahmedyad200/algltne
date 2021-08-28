@@ -14463,6 +14463,19 @@ end
 send(msg.chat_id_, msg.id_, t..'━━━━━━\nاضغط علي الاسم ليتم نسخه\n╾╾╾╾╾╾╾╾╾╾╾╾╾╾╾╸\n ☭[𝐒𝐎𝐔𝐑𝐂𝐄 𝐂𝐋𝐀𝐒𝐒𝐈𝐊](t.me/XXx_cLASsIC_xXX)☭ ')
 end
 
+if text == "تعطيل الترجمه" and Manager(msg) then
+send(msg.chat_id_, msg.id_, '☭تم تعطيل الترجمه')
+database:set(bot_id.."YYYBD:TRGMA"..msg.chat_id_,"close")
+end
+if text == "تفعيل الترجمه" and Manager(msg) then
+send(msg.chat_id_, msg.id_,'☭تم تفعيل الترجمه')
+database:set(bot_id.."YYYBD:TRGMA"..msg.chat_id_,"open")
+end
+if text and text:match("^ترجمه (.*)$") and database:get(bot_id.."YYYBD:TRGMA"..msg.chat_id_) == "open" then
+local text = text:match("^ترجمه (.*)$")
+local TRGMA = https.request('https://devdeiveddev.ml/api/google/tran.php?o=en&i=ar&t='..URL.escape(text)..'')
+send(msg.chat_id_, msg.id_, TRGMA)
+end
 if text == "تعطيل الابراج" and Manager(msg) then
 send(msg.chat_id_, msg.id_, '☭ تم تعطيل الابراج')
 database:set(bot_id.." sofi:brj_Bots"..msg.chat_id_,"close")
