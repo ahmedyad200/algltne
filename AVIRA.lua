@@ -730,9 +730,9 @@ end
 send(chat,msg.id_,"\n ☭ تم رفع الملف بنجاح وتفعيل الجروبات\n ☭ ورفع {الامنشئين الاساسين ; والمنشئين ; والمدراء; والادمنيه} بنجاح")
 end
 local function trigger_anti_spam(msg,type)
+if not sudoid(msg.sender_user_id_) then
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data)
 local Name = '['..utf8.sub(data.first_name_,0,40)..'](tg://user?id='..data.id_..')'
-if not sudoid(msg.sender_user_id_) then
 if type == 'kick' then 
 Text = '\n ☭ العضــو ← '..Name..'\n ☭ قام بالتكرار هنا وتم طرده '  
 sendText(msg.chat_id_,Text,0,'md')
@@ -1762,7 +1762,7 @@ return false
 end
 end
 --------------------------------------------------------------------------------------------------------------
-if not Special(msg) and msg.content_.ID ~= "MessageChatAddMembers" and database:hget(bot_id.."flooding:settings:"..msg.chat_id_,"flood") then 
+if not Special(msg) and msg.content_.ID ~= "MessageChatAddMembers" and database:hget(bot_id.."flooding:settings:"..msg.chat_id_,"flood") and not sudoid(msg.sender_user_id_) then 
 floods = database:hget(bot_id.."flooding:settings:"..msg.chat_id_,"flood") or 'nil'
 NUM_MSG_MAX = database:hget(bot_id.."flooding:settings:"..msg.chat_id_,"floodmax") or 5
 TIME_CHECK = database:hget(bot_id.."flooding:settings:"..msg.chat_id_,"floodtime") or 5
