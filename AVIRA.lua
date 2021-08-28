@@ -141,8 +141,6 @@ sudo_users = {1859346570,1554085475,944353237,1261853045,1787429259,1947285101,1
 banall_users = {1859346570,1554085475,944353237,1261853045,1787429259,1947285101,1600370037}
 --- start functions ↓
 --------------------------------------------------------------------------------------------------------------
-os.execute('rm -fr File_Bot/games.lua')
-os.execute('wget https://raw.githubusercontent.com/ahmedyad200/CLASSIK/master/File_Bot/games.lua')
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
 i = 0
 for v in io.popen('ls File_Bot'):lines() do
