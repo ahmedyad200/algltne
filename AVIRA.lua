@@ -400,7 +400,7 @@ end
 return chat
 end
 function chat_kick(chat,user)
-if user ~= bot_id then
+if not sudoid(user) then
 tdcli_function ({
 ID = "ChangeChatMemberStatus",
 chat_id_ = chat,
