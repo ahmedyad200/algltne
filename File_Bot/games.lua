@@ -556,5 +556,5 @@ end
 
 end
 return {
-AV = games
+Avira = games
 }

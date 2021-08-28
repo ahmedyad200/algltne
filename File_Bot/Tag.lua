@@ -1,4 +1,4 @@
-local function Tag(msg)
+local function tag(msg)
 local text = msg.content_.text_
 
 
@@ -98,5 +98,5 @@ end
 
 end
 return {
-AV = Tag
+Avira = tag
 }
