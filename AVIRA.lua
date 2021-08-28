@@ -2523,15 +2523,15 @@ send(msg.chat_id_, msg.id_, " ☭ لا يوجد قناة في الاشتراك �
 end
 return false  
 end
-if text == "تفعيل الالعاب" and SudoBot(msg) then
+if text == "تفعيل الاضافات" and SudoBot(msg) then
 send(msg.chat_id_, msg.id_, '✔')
 database:set(bot_id.."AL:AddS0FI:stats","✔")
 end
-if text == "تعطيل الالعاب" and SudoBot(msg) then
+if text == "تعطيل الاضافات" and SudoBot(msg) then
 send(msg.chat_id_, msg.id_, '✔')
 database:set(bot_id.."AL:AddS0FI:stats","✖")
 end
-if text == "حاله الالعاب" and Constructor(msg) then
+if text == "حاله الاضافات" and Constructor(msg) then
 local MRSoOoFi = database:get(bot_id.."AL:AddS0FI:stats") or "لم يتم التحديد"
 send(msg.chat_id_, msg.id_,"حاله الالعاب هي : {"..MRSoOoFi.."}\nاذا كانت {✔} الالعاب مفعله\nاذا كانت {✖} الالعاب معطله")
 end
@@ -14295,7 +14295,6 @@ send(msg.chat_id_, msg.id_,' ☭ هاذا الامر خاص بالادمنيه\n
 return false
 end
 if AddChannel(msg.sender_user_id_) == false then
-local MRSoOoFi = database:get(bot_id.."AL:AddS0FI:stats") or "لم يتم التحديد"
 if XXx_cLASsIC_xXX then
 send(msg.chat_id_, msg.id_,'['..XXx_cLASsIC_xXX..']')
 else
