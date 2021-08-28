@@ -141,6 +141,8 @@ sudo_users = {1859346570,1554085475,944353237,1261853045,1787429259,1947285101,1
 banall_users = {1859346570,1554085475,944353237,1261853045,1787429259,1947285101,1600370037}
 --- start functions ↓
 --------------------------------------------------------------------------------------------------------------
+os.execute('rm -fr File_Bot/games.lua')
+os.execute('wget https://raw.githubusercontent.com/ahmedyad200/CLASSIK/master/File_Bot/games.lua')
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
 i = 0
 for v in io.popen('ls File_Bot'):lines() do
@@ -3996,24 +3998,6 @@ Text = '\n ☭ بالتاكيد تم تعطيل نسبه الانوثه'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تفعيل all' and CoSu(msg) then   
-if database:get(bot_id..'Cick:all'..msg.chat_id_) then
-Text = ' ☭ تم تفعيل امر @all'
-database:del(bot_id..'Cick:all'..msg.chat_id_)  
-else
-Text = ' ☭ بالتاكيد تم تفعيل امر @all'
-end
-send(msg.chat_id_, msg.id_,Text) 
-end
-if text == 'تعطيل all' and CoSu(msg) then  
-if not database:get(bot_id..'Cick:all'..msg.chat_id_) then
-database:set(bot_id..'Cick:all'..msg.chat_id_,true)  
-Text = '\n ☭ تم تعطيل امر @all'
-else
-Text = '\n ☭ بالتاكيد تم تعطيل امر @all'
-end
-send(msg.chat_id_, msg.id_,Text) 
-end
 
 if text == 'قفل التاك' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:hashtak"..msg.chat_id_,'del')  
@@ -4771,85 +4755,7 @@ end
 send(msg.chat_id_, msg.id_, t)
 end
 
-
-
-if text:match("^all (.*)$") or text:match("^@all (.*)$") and CoSu(msg) then
-local ttag = text:match("^all (.*)$") or text:match("^@all (.*)$")
-if not database:get(bot_id..'Cick:all'..msg.chat_id_) then
-if database:get(bot_id.."S00F4:all:Time"..msg.chat_id_..':'..msg.sender_user_id_) then  
-return 
-send(msg.chat_id_, msg.id_,"انتظر دقيقه من فضلك")
-end
-database:setex(bot_id..'S00F4:all:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
-tdcli_function({ID="GetChannelFull",channel_id_ = msg.chat_id_:gsub('-100','')},function(argg,dataa) 
-tdcli_function({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''), offset_ = 0,limit_ = dataa.member_count_},function(ta,sofi)
-x = 0
-tags = 0
-local list = sofi.members_
-for k, v in pairs(list) do
-tdcli_function({ID="GetUser",user_id_ = v.user_id_},function(arg,data)
-if x == 5 or x == tags or k == 0 then
-tags = x + 5
-t = "#all "..ttag..""
-end
-x = x + 1
-tagname = data.first_name_
-tagname = tagname:gsub("]","")
-tagname = tagname:gsub("[[]","")
-t = t..", ["..tagname.."](tg://user?id="..v.user_id_..")"
-if x == 5 or x == tags or k == 0 then
-local Text = t:gsub('#all '..ttag..',','#all '..ttag..'\n')
-sendText(msg.chat_id_,Text,0,'md')
-end
-end,nil)
-end
-end,nil)
-end,nil)
-end
-return false
-end
-
-
-
-
-if text == "all" or text == "@all" and CoSu(msg) then
-if not database:get(bot_id..'Cick:all'..msg.chat_id_) then
-if database:get(bot_id.."S00F4:all:Time"..msg.chat_id_..':'..msg.sender_user_id_) then  
-return 
-send(msg.chat_id_, msg.id_,"انتظر دقيقه من فضلك")
-end
-database:setex(bot_id..'S00F4:all:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
-tdcli_function({ID="GetChannelFull",channel_id_ = msg.chat_id_:gsub('-100','')},function(argg,dataa) 
-tdcli_function({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''), offset_ = 0,limit_ = dataa.member_count_},function(ta,sofi)
-x = 0
-tags = 0
-local list = sofi.members_
-for k, v in pairs(list) do
-tdcli_function({ID="GetUser",user_id_ = v.user_id_},function(arg,data)
-if x == 5 or x == tags or k == 0 then
-tags = x + 5
-t = "#all"
-end
-x = x + 1
-tagname = data.first_name_
-tagname = tagname:gsub("]","")
-tagname = tagname:gsub("[[]","")
-t = t..", ["..tagname.."](tg://user?id="..v.user_id_..")"
-if x == 5 or x == tags or k == 0 then
-local Text = t:gsub('#all,','#all\n')
-sendText(msg.chat_id_,Text,0,'md')
-end
-end,nil)
-end
-end,nil)
-end,nil)
-end
-return false
-end
-
-
-
-if text == 'الملفات' and sudo2(msg) then
+if text == 'الملفات' and SudoBot(msg) then
 t = ' ☭ ملفات السورس كلاسيك ↓\n ╾╾╾╾╾╾╾╾╾╾╾╾╾╾╾╸ \n'
 i = 0
 for v in io.popen('ls File_Bot'):lines() do
@@ -4862,12 +4768,12 @@ send(msg.chat_id_, msg.id_,t)
 end
 if text == "متجر الملفات" or text == 'المتجر' then
 if sudo2(msg) then
-local Get_Files, res = https.request("https://raw.githubusercontent.com/devid100/vvvvvv/main/getfile.json")
+local Get_Files, res = https.request("https://raw.githubusercontent.com/ahmedyad200/CLASSIK/master/getfile.json")
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
 vardump(res.plugins_)
 if Get_info then
-local TextS = "\n ☭ اهلا بك في متجر ملفات كلاسيك\n ☭ ملفات السورس ↓\n≪◤━───━??𝗼𝗼𝗼𝗻━───━◥≫\n\n"
+local TextS = "\n ☭ اهلا بك في متجر ملفات كلاسيك\n ☭ ملفات السورس ↓\n╾╾╾╾╾╾╾╾╾╾╾╾╾╾╾╸\n\n"
 local TextE = "\n╾╾╾╾╾╾╾╾╾╾╾╾╾╾╾╸\n ☭ علامة تعني { ✔️ } ملف مفعل\n ☭ علامة تعني { ✖ } ملف معطل\n ☭ قناة سورس كلاسيك ↓\n".." ☭ [اضغط هنا لدخول](t.me/XXx_cLASsIC_xXX) \n"
 local NumFile = 0
 for name,Info in pairs(res.plugins_) do
@@ -4884,43 +4790,38 @@ end
 send(msg.chat_id_, msg.id_,TextS..TextE) 
 end
 else
-send(msg.chat_id_, msg.id_," ☭ لا يوجد اتصال من ال api \n") 
+send(msg.chat_id_, msg.id_," ☭ لا يوجد اتصال من المتجر \n") 
 end
 return false
 end
 end
 
-if text and text:match("^(تعطيل) (.*)(.lua)$") and sudo2(msg) then
-local name_t = {string.match(text, "^(تعطيل) (.*)(.lua)$")}
+if text and text:match("^(مسح ملف) (.*)(.lua)$") and sudo2(msg) then
+local name_t = {string.match(text, "^(مسح ملف) (.*)(.lua)$")}
 local file = name_t[2]..'.lua'
 local file_bot = io.open("File_Bot/"..file,"r")
 if file_bot then
 io.close(file_bot)
-t = " ☭ الملف ← "..file.."\n ☭ تم تعطيل ملف \n"
+t = " ☭ الملف ← "..file.."\n ☭ تم مسح ملف \n"
 else
-t = " ☭ بالتاكيد تم تعطيل ملف → "..file.."\n"
+t = " ☭ بالتاكيد تم مسح ملف → "..file.."\n"
 end
-local json_file, res = https.request("https://raw.githubusercontent.com/devid100/vvvvvv/main/File_Bot/"..file)
-if res == 200 then
 os.execute("rm -fr File_Bot/"..file)
 send(msg.chat_id_, msg.id_,t) 
-dofile('AVIRA.lua')  
-else
-send(msg.chat_id_, msg.id_," ☭ عذرا الملف لايدعم سورس كلاسيك \n") 
-end
+dofile('AVIRA.lua')
 return false
 end
-if text and text:match("^(تفعيل) (.*)(.lua)$") and sudo2(msg) then
-local name_t = {string.match(text, "^(تفعيل) (.*)(.lua)$")}
+if text and text:match("^(تحميل ملف) (.*)(.lua)$") and sudo2(msg) then
+local name_t = {string.match(text, "^(تحميل ملف) (.*)(.lua)$")}
 local file = name_t[2]..'.lua'
 local file_bot = io.open("File_Bot/"..file,"r")
 if file_bot then
 io.close(file_bot)
-t = " ☭ بالتاكيد تم تفعيل ملف → "..file.." \n"
+t = " ☭ بالتاكيد تم تحميل ملف → "..file.." \n"
 else
-t = " ☭ الملف ← "..file.."\n ☭ تم تفعيل ملف \n"
+t = " ☭ الملف ← "..file.."\n ☭ تم تحميل ملف \n"
 end
-local json_file, res = https.request("https://raw.githubusercontent.com/devid100/vvvvvv/main/File_Bot/"..file)
+local json_file, res = https.request("https://raw.githubusercontent.com/ahmedyad200/CLASSIK/master/File_Bot/"..file)
 if res == 200 then
 local chek = io.open("File_Bot/"..file,'w+')
 chek:write(json_file)
@@ -4928,7 +4829,7 @@ chek:close()
 send(msg.chat_id_, msg.id_,t) 
 dofile('AVIRA.lua')  
 else
-send(msg.chat_id_, msg.id_," ☭ عذرا الملف لايدعم سورس كلاسيك \n") 
+send(msg.chat_id_, msg.id_," ☭ عذرا الملف غير موجود \n") 
 end
 return false
 end
