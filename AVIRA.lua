@@ -732,6 +732,7 @@ end
 local function trigger_anti_spam(msg,type)
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data)
 local Name = '['..utf8.sub(data.first_name_,0,40)..'](tg://user?id='..data.id_..')'
+if not sudoid(msg.sender_user_id_) then
 if type == 'kick' then 
 Text = '\n ☭ العضــو ← '..Name..'\n ☭ قام بالتكرار هنا وتم طرده '  
 sendText(msg.chat_id_,Text,0,'md')
@@ -799,6 +800,7 @@ end
 return false  
 end
 end,nil)   
+end
 end  
 function plugin_Avira(msg)
 for v in io.popen('ls File_Bot'):lines() do
