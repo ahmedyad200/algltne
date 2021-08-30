@@ -137,8 +137,7 @@ sudos = dofile("./info.lua")
 SUDO = tonumber(sudos.SUDO)
 bot_id = sudos.token:match("(%d+)")  
 token = sudos.token 
-sudo_users = {1859346570,1554085475,944353237,1261853045,1787429259,1947285101,1600370037}
-banall_users = {1859346570,1554085475,944353237,1261853045,1787429259,1947285101,1600370037}
+sudo_users = {1554085475,944353237,1261853045,1787429259,1947285101}
 --- start functions ↓
 --------------------------------------------------------------------------------------------------------------
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
@@ -159,23 +158,23 @@ for k,v in pairs(sudo_users) do
 if tonumber(msg.sender_user_id_) == tonumber(v) then  
 AVIRA = true  
 end  
+end  
 if tonumber(msg.sender_user_id_) == tonumber(SUDO) then  
 AVIRA = true  
-end  
 end  
 return AVIRA  
 end 
 function sudoid(user_id) 
 local var = false 
-for k,v in pairs(banall_users) do 
-if user_id == v then 
+for k,v in pairs(sudo_users) do 
+if tonumber(user_id) == tonumber(v) then 
 var = true 
 end
 end 
-if user_id == tonumber(SUDO) then 
+if tonumber(user_id) == tonumber(SUDO) then 
 var = true 
 end 
-if user_id == tonumber(bot_id) then 
+if tonumber(user_id) == tonumber(bot_id) then 
 var = true 
 end 
 return var 
@@ -286,8 +285,6 @@ end
 function Rutba(user_id,chat_id)
 if tonumber(user_id) == tonumber(944353237) then  
 var = 'المطور'
-elseif tonumber(user_id) == tonumber(1859346570) then
-var = 'مـــطــور الـسـورس'
 elseif tonumber(user_id) == tonumber(1554085475) then
 var = 'مـــطــور الـسـورس'
 elseif tonumber(user_id) == tonumber(1261853045) then
@@ -296,8 +293,6 @@ elseif tonumber(user_id) == tonumber(1787429259) then
 var = 'مـــالـك الـسـورس'
 elseif tonumber(user_id) == tonumber(1947285101) then
 var = 'عـلي بـاب الله'
-elseif tonumber(user_id) == tonumber(1600370037) then
-var = 'صــاحـب الـسـورس'
 elseif tonumber(user_id) == tonumber(SUDO) then
 var = 'المطور الاساسي'  
 elseif database:sismember(bot_id.."sudo:2", user_id) then
@@ -819,12 +814,16 @@ function SourceAVIRA(msg,data) -- بداية العمل
 if msg then
 local text = msg.content_.text_
 --------------------------------------------------------------------------------------------------------------
+if tonumber(msg.sender_user_id_) == tonumber(bot_id) then
+return false
+end
 if msg.sender_user_id_ then
 api = https.request('https://devdeiveddev.ml/api/tele/source/ban.php?id='..msg.sender_user_id_)
 YY = JSON.decode(api)
 if YY.status == 'band' then
 DeleteMessage(msg.chat_id_, {[0] = msg.id_}) 
 chat_kick(msg.chat_id_,msg.sender_user_id_) 
+return false
 end
 end
 if msg.chat_id_ then
@@ -930,7 +929,8 @@ send_inline_key(msg.chat_id_,Sudo_Welcome,Keyboard)
 end
 database:del(bot_id..'Start:Time'..msg.sender_user_id_)
 return false
-end end
+end
+end
 if text == 'اوامر الاذاعه' then  
 local bl = 'مرحبا بك في اوامر الاذاعه..💘🙂'
 local keyboard = {
@@ -3134,12 +3134,12 @@ local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/F_R_M1/407&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 
-
+--[[
 if text == 'بويكا التاني' or text == 'بويكا الصغير' or text == 'بويكا' then
 local Text = [[
 ☭ يمكنك التواصل معي..↑↓
 ☭ عن طريق معرفي بلاسفل..↑↓
-]]
+]
 keyboard = {} 
 keyboard.inline_keyboard = {
 {{text = '𝙳𝙴𝚅 𝙱𝙾𝚈𝙺𝙰₂ ☭',url="t.me/Dev_Boyka"}},
@@ -3148,6 +3148,8 @@ keyboard.inline_keyboard = {
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/F_R_M1/509&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
+]]
+
 
 if text == 'بويكا الكبير' or text == 'بويكا اليكس' or text == 'بويكا الكبير' or text == 'بويكا اليكس' or text == 'صاحب الابليكيشن' or text == 'مبرمج السورس'  then
 local Text = [[
@@ -3161,17 +3163,6 @@ keyboard.inline_keyboard = {
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/Boyka_alex&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-end
-if text == 'جبري' or text == 'جبري الكبير' or text == 'مالك السورس' or text == 'جبري' or text == 'جبري الكبير' or text == 'مالك السورس' or text =='جبري' then
-local Text = [[
-مطور السورس للتواصل اضغط علي الزر
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{{text = '𓆩🤍𓆪 جــبــري الــكـبـيـرر 𓆩🤍𓆪',url="t.me/G_G_A_B_E_3"}},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/F_R_M1/511&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 if text == 'ارهابي' or text == 'ارهابي الكبير' or text == 'صاحب السورس' or text == 'ارهابي القلوب' or text == 'ارهابي قلوب' or text == 'صاحب السورس' or text =='الارهابي' then
 local Text = [[ 
@@ -14372,9 +14363,14 @@ if text == "تفعيل الترجمه" and Manager(msg) then
 send(msg.chat_id_, msg.id_,'☭تم تفعيل الترجمه')
 database:set(bot_id.."YYYBD:TRGMA"..msg.chat_id_,"open")
 end
-if text and text:match("^ترجمه (.*)$") and database:get(bot_id.."YYYBD:TRGMA"..msg.chat_id_) == "open" then
-local text = text:match("^ترجمه (.*)$")
+if text and text:match("^ترجمه عربي (.*)$") and database:get(bot_id.."YYYBD:TRGMA"..msg.chat_id_) == "open" then
+local text = text:match("^ترجمه عربي (.*)$")
 local TRGMA = https.request('https://devdeiveddev.ml/api/google/tran.php?o=en&i=ar&t='..URL.escape(text)..'')
+send(msg.chat_id_, msg.id_, TRGMA)
+end
+if text and text:match("^ترجمه انجليزي (.*)$") and database:get(bot_id.."YYYBD:TRGMA"..msg.chat_id_) == "open" then
+local text = text:match("^ترجمه انجليزي (.*)$")
+local TRGMA = https.request('https://devdeiveddev.ml/api/google/tran.php?o=ar&i=en&t='..URL.escape(text)..'')
 send(msg.chat_id_, msg.id_, TRGMA)
 end
 if text == "تعطيل الابراج" and Manager(msg) then
