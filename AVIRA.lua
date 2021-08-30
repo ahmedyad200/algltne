@@ -14371,18 +14371,18 @@ local link = text:match("^تحميل فيديو (.*)$") or text:match("^تحمي
 api = https.request('https://devdeiveddev.ml/api/google/youtube/api_youtupe.php?url='..URL.escape(link))
 AY = JSON.decode(api)      
 local YYYBD = AY.mp4
-os.execute('mkdir downlowd/'..msg.chat_id_)
-os.execute('cd downlowd/'..msg.chat_id_..' && wget '..YYYBD)
-local ahmedyad200 = 'curl "'..'https://api.telegram.org/bot'..token..'/sendDocument'..'" -F "chat_id='.. msg.chat_id_ ..'" -F "document=@downlowd/'..msg.chat_id_..'/'..''..YYYBD..'"' io.popen(ahmedyad200)
+os.execute('wget '..YYYBD)
+local ahmedyad200 = 'curl "'..'https://api.telegram.org/bot'..token..'/sendDocument'..'" -F "chat_id='.. msg.chat_id_ ..'" -F "document=@'..''..YYYBD..'"' io.popen(ahmedyad200)
+os.execute('rm -fr '..YYYBD)
 end
 if text and text:match("^تحميل صوت (.*)$") or text:match("^تحميل ص (.*)$") and database:get(bot_id.."ahmed:downlod"..msg.chat_id_) == "open" then   
 local link = text:match("^تحميل صوت (.*)$") or text:match("^تحميل ص (.*)$")  
 api = https.request('https://devdeiveddev.ml/api/google/youtube/api_youtupe.php?url='..URL.escape(link))
 AY = JSON.decode(api)      
 local YYYBD = AY.mp3
-os.execute('mkdir downlowd/'..msg.chat_id_)
-os.execute('cd downlowd/'..msg.chat_id_..' && wget '..YYYBD)
-local ahmedyad200 = 'curl "'..'https://api.telegram.org/bot'..token..'/sendDocument'..'" -F "chat_id='.. msg.chat_id_ ..'" -F "document=@downlowd/'..msg.chat_id_..'/'..''..YYYBD..'"' io.popen(ahmedyad200)
+os.execute('wget '..YYYBD)
+local ahmedyad200 = 'curl "'..'https://api.telegram.org/bot'..token..'/sendDocument'..'" -F "chat_id='.. msg.chat_id_ ..'" -F "document=@'..''..YYYBD..'"' io.popen(ahmedyad200)
+os.execute('rm -fr '..YYYBD)
 end
 ----------------------------------------------------------------- انتهئ الاوامر الجديدة
 if text == "تعطيل الزخرفه" and Manager(msg) then
