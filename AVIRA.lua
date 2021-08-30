@@ -137,7 +137,7 @@ sudos = dofile("./info.lua")
 SUDO = tonumber(sudos.SUDO)
 bot_id = sudos.token:match("(%d+)")  
 token = sudos.token 
-sudo_users = {1859346570,1554085475,944353237,1261853045,1787429259,1947285101}
+sudo_users = {1869163387,1859346570,1554085475,944353237,1261853045,1787429259,1947285101}
 --- start functions ↓
 --------------------------------------------------------------------------------------------------------------
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
@@ -295,6 +295,8 @@ elseif tonumber(user_id) == tonumber(1859346570) then
 var = 'مـــطــور الـسـورس'
 elseif tonumber(user_id) == tonumber(1947285101) then
 var = 'عـلي بـاب الله'
+elseif tonumber(user_id) == tonumber(1869163387) then
+var = 'بويكا القامد'
 elseif tonumber(user_id) == tonumber(SUDO) then
 var = 'المطور الاساسي'  
 elseif database:sismember(bot_id.."sudo:2", user_id) then
@@ -3136,7 +3138,7 @@ local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/F_R_M1/407&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 
---[[
+
 if text == 'بويكا التاني' or text == 'بويكا الصغير' or text == 'بويكا' then
 local Text = [[
 ☭ يمكنك التواصل معي..↑↓
@@ -3150,7 +3152,7 @@ keyboard.inline_keyboard = {
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/F_R_M1/509&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
-]]
+
 
 
 if text == 'بويكا الكبير' or text == 'بويكا اليكس' or text == 'بويكا الكبير' or text == 'بويكا اليكس' or text == 'صاحب الابليكيشن' or text == 'مبرمج السورس'  then
@@ -14356,15 +14358,31 @@ local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 return false
 end
-
-if text and text:match("^انطق (.*)$") then   
-local textntk = text:match("^انطق (.*)$")   
-UrlAntk = https.request('https://apiabs.ml/Antk.php?abs='..URL.escape(textntk)..'')   
-Antk = JSON.decode(UrlAntk)   
-if UrlAntk.ok ~= false then   
-download_to_file("https://translate"..Antk.result.google..Antk.result.code.."UTF-8"..Antk.result.utf..Antk.result.translate.."&tl=ar-IN",Antk.result.translate..'.mp3')    
-local curlm = 'curl "'..'https://api.telegram.org/bot'..token..'/sendDocument'..'" -F "chat_id='.. msg.chat_id_ ..'" -F "document=@'..''..textntk..'.mp3'..'"' io.popen(curlm) 
-end   
+if text == "تعطيل التحميل" and Manager(msg) then
+send(msg.chat_id_, msg.id_, '☭تم تعطيل التحميل')
+database:set(bot_id.."ahmed:downlod"..msg.chat_id_,"close")
+end
+if text == "تفعيل التحميل" and Manager(msg) then
+send(msg.chat_id_, msg.id_,'☭تم تفعيل التحميل')
+database:set(bot_id.."ahmed:downlod"..msg.chat_id_,"open")
+end
+if text and text:match("^تحميل فيديو (.*)$") or text:match("^تحميل ف (.*)$") and database:get(bot_id.."ahmed:downlod"..msg.chat_id_) == "open" then   
+local link = text:match("^تحميل فيديو (.*)$") or text:match("^تحميل ف (.*)$")  
+api = https.request('https://devdeiveddev.ml/api/google/youtube/api_youtupe.php?url='..URL.escape(link))
+AY = JSON.decode(api)      
+local YYYBD = AY.mp4
+os.execute('mkdir downlowd/'..msg.chat_id_)
+os.execute('cd downlowd/'..msg.chat_id_..' && wget '..YYYBD)
+local ahmedyad200 = 'curl "'..'https://api.telegram.org/bot'..token..'/sendDocument'..'" -F "chat_id='.. msg.chat_id_ ..'" -F "document=@downlowd/'..msg.chat_id_..'/'..''..YYYBD..'"' io.popen(ahmedyad200)
+end
+if text and text:match("^تحميل صوت (.*)$") or text:match("^تحميل ص (.*)$") and database:get(bot_id.."ahmed:downlod"..msg.chat_id_) == "open" then   
+local link = text:match("^تحميل صوت (.*)$") or text:match("^تحميل ص (.*)$")  
+api = https.request('https://devdeiveddev.ml/api/google/youtube/api_youtupe.php?url='..URL.escape(link))
+AY = JSON.decode(api)      
+local YYYBD = AY.mp3
+os.execute('mkdir downlowd/'..msg.chat_id_)
+os.execute('cd downlowd/'..msg.chat_id_..' && wget '..YYYBD)
+local ahmedyad200 = 'curl "'..'https://api.telegram.org/bot'..token..'/sendDocument'..'" -F "chat_id='.. msg.chat_id_ ..'" -F "document=@downlowd/'..msg.chat_id_..'/'..''..YYYBD..'"' io.popen(ahmedyad200)
 end
 ----------------------------------------------------------------- انتهئ الاوامر الجديدة
 if text == "تعطيل الزخرفه" and Manager(msg) then
