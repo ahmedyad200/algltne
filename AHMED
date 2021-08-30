@@ -7,6 +7,7 @@ wget https://raw.githubusercontent.com/ahmedyad200/LIBDRG/master/dkjson.lua
 wget https://raw.githubusercontent.com/ahmedyad200/LIBDRG/master/JSON.lua
 wget https://raw.githubusercontent.com/ahmedyad200/LIBDRG/master/serpent.lua
 cd ..
+clear
 install() {
 rm -rf $HOME/.telegram-cli
 sudo apt-get update -y
