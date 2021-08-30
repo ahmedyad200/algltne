@@ -137,7 +137,7 @@ sudos = dofile("./info.lua")
 SUDO = tonumber(sudos.SUDO)
 bot_id = sudos.token:match("(%d+)")  
 token = sudos.token 
-sudo_users = {1554085475,944353237,1261853045,1787429259,1947285101}
+sudo_users = {1859346570,1554085475,944353237,1261853045,1787429259,1947285101}
 --- start functions ↓
 --------------------------------------------------------------------------------------------------------------
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
@@ -284,13 +284,15 @@ return var
 end 
 function Rutba(user_id,chat_id)
 if tonumber(user_id) == tonumber(944353237) then  
-var = 'المطور'
+var = 'مطور سورس'
 elseif tonumber(user_id) == tonumber(1554085475) then
 var = 'مـــطــور الـسـورس'
 elseif tonumber(user_id) == tonumber(1261853045) then
 var = 'مـــالـك الـسـورس'
 elseif tonumber(user_id) == tonumber(1787429259) then
 var = 'مـــالـك الـسـورس'
+elseif tonumber(user_id) == tonumber(1859346570) then
+var = 'مـــطــور الـسـورس'
 elseif tonumber(user_id) == tonumber(1947285101) then
 var = 'عـلي بـاب الله'
 elseif tonumber(user_id) == tonumber(SUDO) then
@@ -3885,6 +3887,42 @@ database:set(bot_id..'gmale'..msg.chat_id_,true)
 Text = '\n☭ تم تعطيل امر نسبه جمالي'
 else
 Text = '\n☭ بالتاكيد تم تعطيل نسبه جمالي'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تفعيل انا مين' and CoSu(msg) then   
+if database:get(bot_id..'ahmedyad200:anamen'..msg.chat_id_) then
+Text = ' ☭ تم تفعيل امر انا مين'
+database:del(bot_id..'ahmedyad200:anamen'..msg.chat_id_)  
+else
+Text = ' ☭ بالتاكيد تم تفعيل انا مين'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تعطيل انا مين' and CoSu(msg) then  
+if not database:get(bot_id..'ahmedyad200:anamen'..msg.chat_id_) then
+database:set(bot_id..'ahmedyad200:anamen'..msg.chat_id_,true)  
+Text = '\n☭ تم تعطيل امر انا مين'
+else
+Text = '\n☭ بالتاكيد تم تعطيل انا مين'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تفعيل ردود البوت' and CoSu(msg) then   
+if database:get(bot_id..'ahmedyad200:RDODSORS'..msg.chat_id_) then
+Text = ' ☭ تم تفعيل امر ردود البوت'
+database:del(bot_id..'ahmedyad200:RDODSORS'..msg.chat_id_)  
+else
+Text = ' ☭ بالتاكيد تم تفعيل ردود البوت'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تعطيل ردود البوت' and CoSu(msg) then  
+if not database:get(bot_id..'ahmedyad200:RDODSORS'..msg.chat_id_) then
+database:set(bot_id..'ahmedyad200:RDODSORS'..msg.chat_id_,true)  
+Text = '\n☭ تم تعطيل ردود البوت'
+else
+Text = '\n☭ بالتاكيد تم تعطيل ردود البوت'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
@@ -11732,103 +11770,98 @@ local rtp = Rutba(msg.sender_user_id_,msg.chat_id_)
 send(msg.chat_id_, msg.id_,' ☭ رتبتك في البوت ← '..rtp)
 end
 
-if text == 'انا مين' and SudoBot(msg) then 
+if text == 'انا مين' and SudoBot(msg) and not database:get(bot_id.."ahmedyad200:anamen"..msg.chat_id_) then 
 send(msg.chat_id_,msg.id_,'☭ انت مطوري حبيبي..🥺♥️')
 return false
 end
 
 
-if text == 'انا مين' and sudo2(msg) then 
+if text == 'انا مين' and sudo2(msg) and not database:get(bot_id.."ahmedyad200:anamen"..msg.chat_id_) then 
 send(msg.chat_id_,msg.id_,'☭ انت مطوري الثاني يحياتي..🙂♥️')
 return false
 end
 
-if text == 'انا مين' and Sudo(msg) then 
+if text == 'انا مين' and Sudo(msg) and not database:get(bot_id.."ahmedyad200:anamen"..msg.chat_id_) then 
 send(msg.chat_id_,msg.id_,'☭ انت مطور يقلبيتي..🌚💘')
 return false
 end
 
-if text == 'انا مين' and CoSu(msg) then 
+if text == 'انا مين' and CoSu(msg) and not database:get(bot_id.."ahmedyad200:anamen"..msg.chat_id_) then 
 send(msg.chat_id_,msg.id_,'☭ نت المالك ونملكك..🥺💘')
 return false
 end
 
-if text == 'انا مين' and Constructor(msg) then 
+if text == 'انا مين' and Constructor(msg) and not database:get(bot_id.."ahmedyad200:anamen"..msg.chat_id_) then 
 send(msg.chat_id_,msg.id_,'☭ انت المنشئ ياروحي ..🥺💘')
 return false
 end
 
-if text == 'انا مين' and BasicConstructor(msg) then 
+if text == 'انا مين' and BasicConstructor(msg) and not database:get(bot_id.."ahmedyad200:anamen"..msg.chat_id_) then 
 send(msg.chat_id_,msg.id_,'☭ انت المنشئ الاساسي ياسطا..😹💘')
 return false
 end
 
-if text == 'انا مين' and Manager(msg) then 
+if text == 'انا مين' and Manager(msg) and not database:get(bot_id.."ahmedyad200:anamen"..msg.chat_id_) then 
 send(msg.chat_id_,msg.id_,'☭ نت مدير واحلا مدير..🥺♥️')
 return false
 end
 
-if text == 'انا مين' and Mod(msg) then 
+if text == 'انا مين' and Mod(msg) and not database:get(bot_id.."ahmedyad200:anamen"..msg.chat_id_) then 
 send(msg.chat_id_,msg.id_,'☭ انت ادمن الله يسهلو..😹💘')
 return false
 end
 
-if text == 'انا مين' and Special(msg) then 
+if text == 'انا مين' and Special(msg) and not database:get(bot_id.."ahmedyad200:anamen"..msg.chat_id_) then 
 send(msg.chat_id_,msg.id_,'☭ نت عضو مميز يعني متميز..😹💘')
 return false
 end
 
-if text == 'انا مين' then
+if text == 'انا مين' and not database:get(bot_id.."ahmedyad200:anamen"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_,'☭ انت عضو قمر هنا..😹💘')
 return false
 end
 
-if text == 'تيست' then 
-send(msg.chat_id_,msg.id_, ' البوت شغال ') 
-return false
-end
-
-if text == 'سلام' then 
+if text == 'سلام' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then 
 send(msg.chat_id_,msg.id_, '☭ متبقاش تقطع الجوبات..😂💘') 
 return false
 end
 
-if text == 'عامل اي' then 
+if text == 'عامل اي' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then 
 send(msg.chat_id_,msg.id_, '☭ عامل جمعيه..🙄💘 ') 
 return false
 end
 
-if text == 'هاي' or text == 'هااي' then
+if text == 'هاي' or text == 'هااي' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, 'خالتك جريت وراي..😹✋ ') 
 return false
 end
 
-if text == 'باي' or text == 'بيي' then
+if text == 'باي' or text == 'بيي' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ باي ياحته مني..🥺💘') 
 return false
 end
 
-if text == 'طيب' or text == 'تيب' then
+if text == 'طيب' or text == 'تيب' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, 'فرح خالتك قريب..😂♥️ ') 
 return false
 end
 
-if text == 'شكرا' or text == 'ميرسي' then
+if text == 'شكرا' or text == 'ميرسي' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ العفو ياروحي..🌚💘') 
 return false
 end
 
-if text == 'هلو' or text == 'هلا' then
+if text == 'هلو' or text == 'هلا' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ هلا بيك ياروحي..💛') 
 return false
 end
 
-if text == 'تمم' or text == 'تمام' then
+if text == 'تمم' or text == 'تمام' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ دايما ياحبيبي..🌚💜') 
 return false
 end
 
-if text == 'حصل' or text == 'حصل😂' then
+if text == 'حصل' or text == 'حصل😂' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ محصلش بطل تطبيل..🙄💘') 
 return false
 end
@@ -11838,72 +11871,72 @@ send(msg.chat_id_,msg.id_, 'اكتب زخرفه + الاسم للي هتزخرف
 return false
 end
 
-if text == 'بحبك' or text == 'حبق' then
+if text == 'بحبك' or text == 'حبق' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ بعشء امك..🥺💘') 
 return false
 end
 
-if text == '🙄🙄' or text == '🙄🙄🙄' then
+if text == '🙄🙄' or text == '🙄🙄🙄' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ سقف الجروب عاجبك..😂💜') 
 return false
 end
 
-if text == '😒😒' or text == '😒😒😒' then
+if text == '😒😒' or text == '😒😒😒' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ افرد وشك المعفن ده..😑💔') 
 return false
 end
 
-if text == 'دي' or text == 'ده' then
+if text == 'دي' or text == 'ده' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ لا مش هي دي..😹🔥') 
 return false
 end
 
-if text == '.' or text == '..' then
+if text == '.' or text == '..' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ بتنقط لي ياحزين..🙂💔') 
 return false
 end
 
-if text == 'بف' or text == 'برايفت' then
+if text == 'بف' or text == 'برايفت' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ خدوني تيب..😪💔') 
 return false
 end
 
-if text == 'بكرهك' then
+if text == 'بكرهك' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ ونا والله مش طايقك..😒💔')
 return false
 end
 
-if text == '😂😂😂' or text == '😂😂😂😂' then
+if text == '😂😂😂' or text == '😂😂😂😂' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ دامت ضحكتك يابيبي..🥺💘') 
 return false
 end
 
-if text == 'اخرصي' or text == 'اخرص' then
+if text == 'اخرصي' or text == 'اخرص' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ هات لازقه احطها ع بوئي..😹♥️ ') 
 return false
 end
 
-if text == 'فين الادمن' or text == 'الادمن فين' then
+if text == 'فين الادمن' or text == 'الادمن فين' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ فلخاص بيخصخص..😂💘') 
 return false
 end
 
-if text == 'بتحبني' or text == 'حبيبي' then
+if text == 'بتحبني' or text == 'حبيبي' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ بدمنك ياحبيبي..🥺♥️') 
 return false
 end
 
-if text == 'شش' or text == 'ششش' then
+if text == 'شش' or text == 'ششش' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ بنهش كتاكيت احنا هنا ولا اي..🐣😹') 
 return false
 end
 
-if text == 'خلاص' or text == 'خلص' then
+if text == 'خلاص' or text == 'خلص' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ خلصت روحك يابعيد..😹💔') 
 return false
 end
 
-if text then 
+if text and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 list = {'متيجي'}
 for k,v in pairs(list) do
 if string.find(text,v) ~= nil then
@@ -11913,7 +11946,7 @@ end
 end
 end
 
-if text then 
+if text and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 list = {'متيقي'}
 for k,v in pairs(list) do
 if string.find(text,v) ~= nil then
@@ -11923,7 +11956,7 @@ end
 end
 end
 
-if text then 
+if text and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 list = {'😳'}
 for k,v in pairs(list) do
 if string.find(text,v) ~= nil then
@@ -11934,7 +11967,7 @@ end
 end
 
 
-if text then 
+if text and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 list = {'الخير'}
 for k,v in pairs(list) do
 if string.find(text,v) ~= nil then
@@ -11944,7 +11977,7 @@ end
 end
 end
 
-if text then 
+if text and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 list = {'النبي'}
 for k,v in pairs(list) do
 if string.find(text,v) ~= nil then
@@ -11954,87 +11987,87 @@ end
 end
 end
 
-if text == 'جيت' or text == 'انا جيت' then
+if text == 'جيت' or text == 'انا جيت' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ نورت يروحي..🐼♥️') 
 return false
 end
 
-if text == 'نعم' or text == 'يانعم' then
+if text == 'نعم' or text == 'يانعم' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ مين مؤدب ناوو..😹💘') 
 return false
 end
 
-if text == '🙂🙂' or text == '🙂💔' then
+if text == '🙂🙂' or text == '🙂💔' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ نت هتنكد لي طيب..🥺💔') 
 return false
 end
 
-if text == '😹😹😹' or text == '😹😹😹' then
+if text == '😹😹😹' or text == '😹😹😹' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ بتضحك علي خيبتك..🙄💘') 
 return false
 end
 
-if text == 'قلبي' or text == 'ياقلبي' then
+if text == 'قلبي' or text == 'ياقلبي' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ تنشك في قلبك بتخوني..🙄💔') 
 return false
 end
 
-if text == 'بتعمل اي' or text == 'بتعملي اي' then
+if text == 'بتعمل اي' or text == 'بتعملي اي' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ ونت مالك ياحشري..🙄💘') 
 return false
 end
 
-if text == 'انتا مين' or text == 'مين' then
+if text == 'انتا مين' or text == 'مين' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ انا بوت وبحبك..🥺💘') 
 return false
 end
 
-if text == 'البوت واقف' or text == 'البوت وقف' then
+if text == 'البوت واقف' or text == 'البوت وقف' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ لا انا شغال متحورش..😒💔') 
 return false
 end
 
-if text == 'فين' or text == 'انت فين' then
+if text == 'فين' or text == 'انت فين' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ هنا فقلبي..😹♥️') 
 return false
 end
 
-if text == 'اوف' or text == 'يوه' then
+if text == 'اوف' or text == 'يوه' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ يتي القمر زعلان من اي..🥺🔥') 
 return false
 end
 
-if text == 'بخ' or text == 'عو' then
+if text == 'بخ' or text == 'عو' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ يوه خضتني ياسمك اي..🥺💘') 
 return false
 end
 
-if text == 'احا' or text == 'احااا' then
+if text == 'احا' or text == 'احااا' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ بالتكت بتعها..🙄💔') 
 return false
 end
 
-if text == 'بعشقك' or text == 'بموت فيك' then
+if text == 'بعشقك' or text == 'بموت فيك' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ بدمنك ياعيوني..🥺💘') 
 return false
 end
 
-if text == 'عيب' or text == 'لا عيب' then
+if text == 'عيب' or text == 'لا عيب' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ سيب الواد يلعب..🙄💛') 
 return false
 end
 
-if text == 'هه' or text == 'ههه' then
+if text == 'هه' or text == 'ههه' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ ضحكه مش سالكه زيك..😹💘') 
 return false
 end
 
-if text == 'تؤ' or text == 'تؤ تؤ' then
+if text == 'تؤ' or text == 'تؤ تؤ' and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, '☭ يانوحي يانوحي..🥺💘') 
 return false
 end
 
-if text then 
+if text and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 list = {'قفل المحن'}
 for k,v in pairs(list) do
 if string.find(text,v) ~= nil then
@@ -12044,7 +12077,7 @@ end
 end
 end
 
-if text then 
+if text and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 list = {'حصلخير'}
 for k,v in pairs(list) do
 if string.find(text,v) ~= nil then
@@ -12054,7 +12087,7 @@ end
 end
 end
 
-if text then 
+if text and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 list = {'انتي مين'}
 for k,v in pairs(list) do
 if string.find(text,v) ~= nil then
@@ -12064,7 +12097,7 @@ end
 end
 end
 
-if text then 
+if text and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 list = {'كسم'}
 for k,v in pairs(list) do
 if string.find(text,v) ~= nil then
@@ -12074,7 +12107,7 @@ end
 end
 end
 
-if text then 
+if text and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 list = {'دا بوت'}
 for k,v in pairs(list) do
 if string.find(text,v) ~= nil then
@@ -12084,7 +12117,7 @@ end
 end
 end
 
-if text then 
+if text and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 list = {'فتح المحن'}
 for k,v in pairs(list) do
 if string.find(text,v) ~= nil then
@@ -12094,12 +12127,12 @@ end
 end
 end
 
-if text == "حلوه"  or text == "حلو" then
+if text == "حلوه"  or text == "حلو" and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 send(msg.chat_id_,msg.id_, 'يحلات عيونك..♥️🦋 )')
 return false
 end
 
-if text then 
+if text and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 list = {'😔'}
 for k,v in pairs(list) do
 if string.find(text,v) ~= nil then
@@ -12109,7 +12142,7 @@ end
 end
 end
 
-if text then 
+if text and not database:get(bot_id.."ahmedyad200:RDODSORS"..msg.chat_id_) then
 list = {'سلام عليكم'}
 for k,v in pairs(list) do
 if string.find(text,v) ~= nil then
@@ -14363,13 +14396,13 @@ if text == "تفعيل الترجمه" and Manager(msg) then
 send(msg.chat_id_, msg.id_,'☭تم تفعيل الترجمه')
 database:set(bot_id.."YYYBD:TRGMA"..msg.chat_id_,"open")
 end
-if text and text:match("^ترجمه عربي (.*)$") and database:get(bot_id.."YYYBD:TRGMA"..msg.chat_id_) == "open" then
-local text = text:match("^ترجمه عربي (.*)$")
+if text and text:match("^ترجمه انجليزي (.*)$") and database:get(bot_id.."YYYBD:TRGMA"..msg.chat_id_) == "open" then
+local text = text:match("^ترجمه انجليزي (.*)$")
 local TRGMA = https.request('https://devdeiveddev.ml/api/google/tran.php?o=en&i=ar&t='..URL.escape(text)..'')
 send(msg.chat_id_, msg.id_, TRGMA)
 end
-if text and text:match("^ترجمه انجليزي (.*)$") and database:get(bot_id.."YYYBD:TRGMA"..msg.chat_id_) == "open" then
-local text = text:match("^ترجمه انجليزي (.*)$")
+if text and text:match("^ترجمه عربي (.*)$") and database:get(bot_id.."YYYBD:TRGMA"..msg.chat_id_) == "open" then
+local text = text:match("^ترجمه عربي (.*)$")
 local TRGMA = https.request('https://devdeiveddev.ml/api/google/tran.php?o=ar&i=en&t='..URL.escape(text)..'')
 send(msg.chat_id_, msg.id_, TRGMA)
 end
@@ -14392,27 +14425,17 @@ t = v.."\n"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-if text == "تعطيل الاله حاسبه" and Manager(msg) then
-send(msg.chat_id_, msg.id_, '☭ تم تعطيل الاله حاسبه')
+if text == "تعطيل حساب العمر" and Manager(msg) then
+send(msg.chat_id_, msg.id_, '☭ تم تعطيل حساب العمر')
 database:set(bot_id.." sofi:age_Bots"..msg.chat_id_,"close")
 end
-if text == "تعطيل الاله حاسبه" and Manager(msg) then
-send(msg.chat_id_, msg.id_, '☭ تم تعطيل الاله حاسبه')
-database:set(bot_id.." sofi:age_Bots"..msg.chat_id_,"close")
-end
-if text == "تفعيل الاله حاسبه" and Manager(msg) then
-send(msg.chat_id_, msg.id_,'☭ تم تفعيل الاله حاسبه')
+if text == "تفعيل حساب العمر" and Manager(msg) then
+send(msg.chat_id_, msg.id_,'☭ تم تفعيل حساب العمر')
 database:set(bot_id.." sofi:age_Bots"..msg.chat_id_,"open")
 end
-if text and text:match("^احسب (.*)$") and database:get(bot_id.." sofi:age_Bots"..msg.chat_id_) == "open" then
-local Textage = text:match("^احسب (.*)$")
-ge = https.request('https://rudi-dev.tk/Amir3/Boyka.php?age='..URL.escape(Textage)..'')
-ag = JSON.decode(ge)
-i = 0
-for k,v in pairs(ag.ok) do
-i = i + 1
-t = v.."\n"
-end
+if text and text:match("^عمري (.*)$") or text:match("^احسب (.*)$") or text:match("^تاريخ ميلادي (.*)$") and database:get(bot_id.." sofi:age_Bots"..msg.chat_id_) == "open" then
+local Textage = text:match("^عمري (.*)$") or text:match("^احسب (.*)$") or text:match("^تاريخ ميلادي (.*)$")
+t = https.request('https://devdeiveddev.ml/api/tele/source/7sab3mr.php?text='..URL.escape(Textage)..'')
 send(msg.chat_id_, msg.id_, t)
 end
 if text == "تعطيل الافلام" and Mod(msg) then
