@@ -1,10 +1,10 @@
 redis = require('redis') 
-https = require ("ssl.https") 
+https = require("ssl.https") 
 serpent = dofile("./library/serpent.lua") 
 json = dofile("./library/JSON.lua") 
 JSON  = dofile("./library/dkjson.lua")
 URL = require('socket.url')  
-utf8 = require ('lua-utf8') 
+utf8 = require('lua-utf8') 
 database = redis.connect('127.0.0.1', 6379) 
 id_server = io.popen("echo $SSH_CLIENT | awk '{ print $1}'"):read('*a')
 --------------------------------------------------------------------------------------------------------------
@@ -179,7 +179,6 @@ var = true
 end 
 return var 
 end
-
 function sudo2(msg) 
 local hash = database:sismember(bot_id.."sudo:2", msg.sender_user_id_) 
 if hash or SudoBot(msg) then  
@@ -4712,7 +4711,7 @@ send(msg.chat_id_, msg.id_, t)
 end
 
 if text == 'الملفات' and SudoBot(msg) then
-t = ' ☭ ملفات السورس كلاسيك ↓\n ╾╾╾╾╾╾╾╾╾╾╾╾╾╾╾╸ \n'
+t = ' ☭ ملفات سورس كلاسيك ↓\n ╾╾╾╾╾╾╾╾╾╾╾╾╾╾╾╸ \n'
 i = 0
 for v in io.popen('ls File_Bot'):lines() do
 if v:match(".lua$") then
@@ -4723,7 +4722,7 @@ end
 send(msg.chat_id_, msg.id_,t)
 end
 if text == "متجر الملفات" or text == 'المتجر' then
-if sudo2(msg) then
+if SudoBot(msg) then
 local Get_Files, res = https.request("https://raw.githubusercontent.com/ahmedyad200/CLASSIK/master/getfile.json")
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
@@ -4752,7 +4751,7 @@ return false
 end
 end
 
-if text and text:match("^(مسح ملف) (.*)(.lua)$") and sudo2(msg) then
+if text and text:match("^(مسح ملف) (.*)(.lua)$") and SudoBot(msg) then
 local name_t = {string.match(text, "^(مسح ملف) (.*)(.lua)$")}
 local file = name_t[2]..'.lua'
 local file_bot = io.open("File_Bot/"..file,"r")
@@ -4767,7 +4766,7 @@ send(msg.chat_id_, msg.id_,t)
 dofile('AVIRA.lua')
 return false
 end
-if text and text:match("^(تحميل ملف) (.*)(.lua)$") and sudo2(msg) then
+if text and text:match("^(تحميل ملف) (.*)(.lua)$") and SudoBot(msg) then
 local name_t = {string.match(text, "^(تحميل ملف) (.*)(.lua)$")}
 local file = name_t[2]..'.lua'
 local file_bot = io.open("File_Bot/"..file,"r")
@@ -4789,7 +4788,7 @@ send(msg.chat_id_, msg.id_," ☭ عذرا الملف غير موجود \n")
 end
 return false
 end
-if text == "مسح الملفات" and sudo2(msg) then
+if text == "مسح الملفات" and SudoBot(msg) then
 os.execute("rm -fr File_Bot/*")
 send(msg.chat_id_,msg.id_," ☭ تم مسح الملفات")
 return false
