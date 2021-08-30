@@ -14358,6 +14358,7 @@ local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 return false
 end
+--[[
 if text == "تعطيل التحميل" and Manager(msg) then
 send(msg.chat_id_, msg.id_, '☭تم تعطيل التحميل')
 database:set(bot_id.."ahmed:downlod"..msg.chat_id_,"close")
@@ -14384,6 +14385,7 @@ os.execute('wget '..YYYBD)
 local ahmedyad200 = 'curl "'..'https://api.telegram.org/bot'..token..'/sendDocument'..'" -F "chat_id='.. msg.chat_id_ ..'" -F "document=@'..''..YYYBD..'"' io.popen(ahmedyad200)
 os.execute('rm -fr '..YYYBD)
 end
+]]
 ----------------------------------------------------------------- انتهئ الاوامر الجديدة
 if text == "تعطيل الزخرفه" and Manager(msg) then
 send(msg.chat_id_, msg.id_, '☭تم تعطيل الزخرفه')
@@ -14456,6 +14458,7 @@ local Textage = text:match("^عمري (.*)$") or text:match("^احسب (.*)$") o
 t = https.request('https://devdeiveddev.ml/api/tele/source/7sab3mr.php?text='..URL.escape(Textage)..'')
 send(msg.chat_id_, msg.id_, t)
 end
+--[[
 if text == "تعطيل الافلام" and Mod(msg) then
 send(msg.chat_id_, msg.id_, '☭ تم تعطيل الافلام')
 database:set(bot_id.."SOFI:movie_bot"..msg.chat_id_,"close")
@@ -14481,6 +14484,7 @@ https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. 
 end
 end
 end
+]]
 if text == "بتحبو" or text == "بتحب دا" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
 local texting = {"طبعا دا قلبي ♥🙄"," هحب فيه اي دا😹🙂","تؤ محصلش😹"}
@@ -14514,18 +14518,22 @@ database:set(bot_id..'lock:reply'..msg.chat_id_,true)
 Text = '\n ☭ تم تعطيل الردود'
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'بوت حذف' or text == 'رابط حذف' or text == 'رابط الحذف' then
+if text == 'رابط حذف' or text == 'رابط الحذف' or text == 'بوت حذف' or text == 'بوت الحذف' then 
 local Text = [[
- ☭ ⁽𝐒𝐎𝐔𝐑𝐂𝐄 𝐂𝐋𝐀𝐒𝐒𝐈𝐊𝐓𝐄𝐀𝐌₎ ☭ 
-بوت حذف حساب ☭
-فكر قبل لا تتسرع وتروح
-]]
+كل روابط الحذف اهي 😒
+#سلام 😒
+]] 
 keyboard = {} 
-keyboard.inline_keyboard = {
-{{text = 'بوت الحذف',url="t.me/LC6BOT"}},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+keyboard.inline_keyboard = { 
+{{text = 'Telegram in a normal way', url="https://my.telegram.org/auth?to=delete"},{text = 'telegram via bot', url="t.me/LC6BOT"}}, 
+{{text = 'telegram bot method', url="http://my.telegram.org"}}, 
+{{text = 'Facebook', url="https://www.facebook.com/help/deleteaccount"},{text = 'Instagram', url="https://www.instagram.com/accounts/login/?next=/accounts/remove/request/permanent/"}},
+{{text = 'Twitter', url="https://mobile.twitter.com/settings/deactivate"}}, 
+{{text = 'TikTok', url="https://www.tiktok.com/setting/account-delete?lang=en&redirect_url=https%3A%2F%2Fwww.tiktok.com%2Fforyou%3Flang%3Den&enter_from=setting"}}, 
+{{text = 'Snspchat', url="https://accounts.snapchat.com/accounts/login?continue=https%3A%2F%2Faccounts.snapchat.com%2Faccounts%2Fdeleteaccount"}}, 
+} 
+local msg_id = msg.id_/2097152/0.5 
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text and text:match('^الحساب (%d+)$') then
 local id = text:match('^الحساب (%d+)$')
@@ -14552,14 +14560,13 @@ if tonumber(msg.reply_to_message_id_) == 0 then
 Get_Info(msg,msg.chat_id_,msg.sender_user_id_)
 end  
 ------------------------------------------------------------------------
-------------------------------------------------------------
 if text and text:match("[Jj][Oo][Ii][Nn][Cc][Hh][Aa][Tt]") or text and text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or text and text:match("[Tt].[Mm][Ee]") or text and text:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or text and text:match("[Tt][Ee][Ll][Ee][Ss][Cc][Oo].[Pp][Ee]") then
 if database:get(bot_id.."lock:Link"..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = data.message_id_}) 
 return false
 end 
 end
-------------------------------------------------------------
+------------------------------------------------------------------------
 if text and text:match('^صلاحياته @(.*)') then   
 local username = text:match('صلاحياته @(.*)')   
 if tonumber(msg.reply_to_message_id_) == 0 then 
