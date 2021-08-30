@@ -3125,7 +3125,7 @@ end
 if text == 'رابط حذف' or text == 'رابط الحذف' or text == 'بوت حذف' or text == 'بوت الحذف' then 
 local Text = [[
 كل روابط الحذف اهي 😒
-#سلام 😒
+طير بق
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
