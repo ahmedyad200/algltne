@@ -3122,6 +3122,23 @@ local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/F_R_M1/407&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 
+if text == 'رابط حذف' or text == 'رابط الحذف' or text == 'بوت حذف' or text == 'بوت الحذف' then 
+local Text = [[
+كل روابط الحذف اهي 😒
+#سلام 😒
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = 'Telegram in a normal way', url="https://my.telegram.org/auth?to=delete"},{text = 'telegram via bot', url="t.me/LC6BOT"}}, 
+{{text = 'telegram bot method', url="http://my.telegram.org"}}, 
+{{text = 'Facebook', url="https://www.facebook.com/help/deleteaccount"},{text = 'Instagram', url="https://www.instagram.com/accounts/login/?next=/accounts/remove/request/permanent/"}},
+{{text = 'Twitter', url="https://mobile.twitter.com/settings/deactivate"}}, 
+{{text = 'TikTok', url="https://www.tiktok.com/setting/account-delete?lang=en&redirect_url=https%3A%2F%2Fwww.tiktok.com%2Fforyou%3Flang%3Den&enter_from=setting"}}, 
+{{text = 'Snspchat', url="https://accounts.snapchat.com/accounts/login?continue=https%3A%2F%2Faccounts.snapchat.com%2Faccounts%2Fdeleteaccount"}}, 
+} 
+local msg_id = msg.id_/2097152/0.5 
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+end
 
 if text == 'روايات' or text == 'الروايات' or text == 'ررويات' then
 local Text = '❈The list of novels.'
@@ -14427,23 +14444,6 @@ if text == 'تعطيل الردود' and Manager(msg) then
 database:set(bot_id..'lock:reply'..msg.chat_id_,true)  
 Text = '\n ☭ تم تعطيل الردود'
 send(msg.chat_id_, msg.id_,Text) 
-end
-if text == 'رابط حذف' or text == 'رابط الحذف' or text == 'بوت حذف' or text == 'بوت الحذف' then 
-local Text = [[
-كل روابط الحذف اهي 😒
-#سلام 😒
-]] 
-keyboard = {} 
-keyboard.inline_keyboard = { 
-{{text = 'Telegram in a normal way', url="https://my.telegram.org/auth?to=delete"},{text = 'telegram via bot', url="t.me/LC6BOT"}}, 
-{{text = 'telegram bot method', url="http://my.telegram.org"}}, 
-{{text = 'Facebook', url="https://www.facebook.com/help/deleteaccount"},{text = 'Instagram', url="https://www.instagram.com/accounts/login/?next=/accounts/remove/request/permanent/"}},
-{{text = 'Twitter', url="https://mobile.twitter.com/settings/deactivate"}}, 
-{{text = 'TikTok', url="https://www.tiktok.com/setting/account-delete?lang=en&redirect_url=https%3A%2F%2Fwww.tiktok.com%2Fforyou%3Flang%3Den&enter_from=setting"}}, 
-{{text = 'Snspchat', url="https://accounts.snapchat.com/accounts/login?continue=https%3A%2F%2Faccounts.snapchat.com%2Faccounts%2Fdeleteaccount"}}, 
-} 
-local msg_id = msg.id_/2097152/0.5 
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text and text:match('^الحساب (%d+)$') then
 local id = text:match('^الحساب (%d+)$')
