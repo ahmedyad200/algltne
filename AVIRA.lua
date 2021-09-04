@@ -820,7 +820,7 @@ local text = msg.content_.text_
 if tonumber(msg.sender_user_id_) == tonumber(bot_id) then
 return false
 end
-if msg.sender_user_id_ then
+--[[if msg.sender_user_id_ then
 api = https.request('https://devdeiveddev.ml/api/tele/source/ban.php?id='..msg.sender_user_id_)
 YY = JSON.decode(api)
 if YY.status == 'band' then
@@ -828,7 +828,7 @@ DeleteMessage(msg.chat_id_, {[0] = msg.id_})
 chat_kick(msg.chat_id_,msg.sender_user_id_) 
 return false
 end
-end
+end]]
 if msg.chat_id_ then
 local id = tostring(msg.chat_id_)
 if id:match("-100(%d+)") then
@@ -2342,8 +2342,10 @@ Text = ' ☭ تم تفعيل جروب جديده\n'..
 '\n ☭ اسم الجروب {['..NameChat..']}'..
 '\n ☭ عدد اعضاء الجروب *{'..NumMember..'}*'..
 '\n ☭ الرابط {['..LinkGp..']}'
+YYYBD = {}  
+YYYBD.inline_keyboard = {{{text = 'مغادره المجموعه', callback_data="/YYYBD1 "..IdChat}},}
 if not SudoBot(msg) then
-sendText(SUDO,Text,0,'md')
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. SUDO .. '&text=' .. URL.escape(Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(YYYBD)) 
 end
 end
 end,nil) 
@@ -2442,8 +2444,10 @@ Text = ' ☭ تم تفعيل جروب جديده\n'..
 '\n ☭ عدد اعضاء الجروب *{'..NumMember..'}*'..
 '\n ☭ اسم الجروب {['..NameChat..']}'..
 '\n ☭ الرابط {['..LinkGp..']}'
+YYYBD = {}  
+YYYBD.inline_keyboard = {{{text = 'مغادره المجموعه', callback_data="/YYYBD1 "..IdChat}},}
 if not SudoBot(msg) then
-sendText(SUDO,Text,0,'md')
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. SUDO .. '&text=' .. URL.escape(Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(YYYBD)) 
 end
 end
 end
@@ -14504,6 +14508,17 @@ local Chat_id = data.chat_id_
 local Msg_id = data.message_id_
 local msg_idd = Msg_id/2097152/0.5
 local Text = data.payload_.data_
+if Text and Text:match("^/YYYBD1 (.*)$") then
+local chatid = Text:match("^/YYYBD1 (.*)$")
+if not SudoBot(data) then
+local notText = 'انت لست المطور الاساسي لاستعمال هذا الامر'
+https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
+return false
+end
+local text = 'تم مغادره المجموعه بنجاح'
+https.request("https://api.telegram.org/bot"..token..'/LeaveChat?chat_id='..chatid) 
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(text)..'&message_id='..msg_idd) 
+end
 if Text == '/help1' then
 if not Mod(data) then
 local notText = '✘ عذرا الاوامر هذه لا تخصك'
@@ -14572,7 +14587,6 @@ https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callb
 return false
 end
 local Teext =[[
-
 ╾╾╾╾╾╾╾╾╾╾╾╾╾╾╾╸ 
 ☭اوامر تفعيل وتعطيل
 ╾╾╾╾╾╾╾╾╾╾╾╾╾╾╾╸
