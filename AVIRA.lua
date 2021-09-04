@@ -137,7 +137,7 @@ sudos = dofile("./info.lua")
 SUDO = tonumber(sudos.SUDO)
 bot_id = sudos.token:match("(%d+)")  
 token = sudos.token 
-sudo_users = {1869163387,1859346570,1554085475,944353237,1261853045,1787429259,1947285101}
+sudo_users = {1859346570,1554085475,944353237,1261853045,1787429259,1947285101}
 --- start functions ↓
 --------------------------------------------------------------------------------------------------------------
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
@@ -294,8 +294,6 @@ elseif tonumber(user_id) == tonumber(1859346570) then
 var = 'مـــطــور الـسـورس'
 elseif tonumber(user_id) == tonumber(1947285101) then
 var = 'عـلي بـاب الله'
-elseif tonumber(user_id) == tonumber(1869163387) then
-var = 'بويكا القامد'
 elseif tonumber(user_id) == tonumber(SUDO) then
 var = 'المطور الاساسي'  
 elseif database:sismember(bot_id.."sudo:2", user_id) then
@@ -820,7 +818,7 @@ local text = msg.content_.text_
 if tonumber(msg.sender_user_id_) == tonumber(bot_id) then
 return false
 end
---[[if msg.sender_user_id_ then
+if msg.sender_user_id_ then
 api = https.request('https://devdeiveddev.ml/api/tele/source/ban.php?id='..msg.sender_user_id_)
 YY = JSON.decode(api)
 if YY.status == 'band' then
@@ -828,7 +826,7 @@ DeleteMessage(msg.chat_id_, {[0] = msg.id_})
 chat_kick(msg.chat_id_,msg.sender_user_id_) 
 return false
 end
-end]]
+end
 if msg.chat_id_ then
 local id = tostring(msg.chat_id_)
 if id:match("-100(%d+)") then
