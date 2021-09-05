@@ -818,15 +818,14 @@ local text = msg.content_.text_
 if tonumber(msg.sender_user_id_) == tonumber(bot_id) then
 return false
 end
---[[if msg.sender_user_id_ then
+if msg.sender_user_id_ then
 api = https.request('https://devdeiveddev.ml/api/tele/source/ban.php?id='..msg.sender_user_id_)
 YY = JSON.decode(api)
 if YY.status == 'band' then
 DeleteMessage(msg.chat_id_, {[0] = msg.id_}) 
 chat_kick(msg.chat_id_,msg.sender_user_id_) 
-return false
 end
-end]]
+end
 if msg.chat_id_ then
 local id = tostring(msg.chat_id_)
 if id:match("-100(%d+)") then
