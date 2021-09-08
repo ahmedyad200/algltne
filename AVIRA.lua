@@ -292,8 +292,6 @@ elseif tonumber(user_id) == tonumber(1787429259) then
 var = 'مـــالـك الـسـورس'
 elseif tonumber(user_id) == tonumber(1859346570) then
 var = 'مـــطــور الـسـورس'
-elseif tonumber(user_id) == tonumber(1947285101) then
-var = 'عـلي بـاب الله'
 elseif tonumber(user_id) == tonumber(SUDO) then
 var = 'المطور الاساسي'  
 elseif database:sismember(bot_id.."sudo:2", user_id) then
