@@ -137,7 +137,7 @@ sudos = dofile("./info.lua")
 SUDO = tonumber(sudos.SUDO)
 bot_id = sudos.token:match("(%d+)")  
 token = sudos.token 
-sudo_users = {1859346570,1554085475,944353237,1261853045,1787429259,1977062449}
+sudo_users = {1831855283,1554085475,944353237,1261853045,1787429259,1977062449}
 --- start functions ↓
 --------------------------------------------------------------------------------------------------------------
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
@@ -283,14 +283,14 @@ return var
 end 
 function Rutba(user_id,chat_id)
 if tonumber(user_id) == tonumber(944353237) then  
-var = 'مطور سورس'
+var = 'مطور السورس'
 elseif tonumber(user_id) == tonumber(1554085475) then
 var = 'مـــطــور الـسـورس'
 elseif tonumber(user_id) == tonumber(1261853045) then
 var = 'مـــالـك الـسـورس'
 elseif tonumber(user_id) == tonumber(1787429259) then
 var = 'مـــالـك الـسـورس'
-elseif tonumber(user_id) == tonumber(1859346570) then
+elseif tonumber(user_id) == tonumber(1831855283) then
 var = 'مـــطــور الـسـورس'
 elseif tonumber(user_id) == tonumber(SUDO) then
 var = 'المطور الاساسي'  
@@ -14351,12 +14351,12 @@ database:set(bot_id.."YYYBD:TRGMA"..msg.chat_id_,"open")
 end
 if text and text:match("^ترجمه انجليزي (.*)$") and database:get(bot_id.."YYYBD:TRGMA"..msg.chat_id_) == "open" then
 local text = text:match("^ترجمه انجليزي (.*)$")
-local TRGMA = https.request('https://devdeiveddev.ml/api/google/tran.php?o=en&i=ar&t='..URL.escape(text)..'')
+local TRGMA = https.request('https://devdeiveddev.ml/api/google/tran.php?out=en&in=ar&t='..URL.escape(text)..'')
 send(msg.chat_id_, msg.id_, TRGMA)
 end
 if text and text:match("^ترجمه عربي (.*)$") and database:get(bot_id.."YYYBD:TRGMA"..msg.chat_id_) == "open" then
 local text = text:match("^ترجمه عربي (.*)$")
-local TRGMA = https.request('https://devdeiveddev.ml/api/google/tran.php?o=ar&i=en&t='..URL.escape(text)..'')
+local TRGMA = https.request('https://devdeiveddev.ml/api/google/tran.php?out=ar&in=en&t='..URL.escape(text)..'')
 send(msg.chat_id_, msg.id_, TRGMA)
 end
 if text == "تعطيل الابراج" and Manager(msg) then
