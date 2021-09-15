@@ -3113,11 +3113,12 @@ local Text =[[
 keyboard = {} 
 keyboard.inline_keyboard = {
 {{text = '⌯ 𝐒𝐎𝐔𝐑𝐂𝐄 ⊁',url="t.me/Abdaskndar"}},
-{{text = '⌯ 𝐃𝐄𝐕 ⊁',url="t.me/gvabdo"}},
+{{text = '⌯ 𝐊𝐀𝐑𝐌𝐎𝐙 ⊁',url="t.me/K_A_RM_O_Z"}},
+{{text = '⌯ 𝘼𝘽𝘿𝙊 𝘼𝙎𝙆𝘼𝙉𝘿𝘼𝙍 ⊁',url="t.me/gvabdo"}},
 {{text = 'اضف البوت لمجموعتك 𖠕', url="http://t.me/"..dofile("./info.lua").botUserName.."?startgroup=start"}},
 }
 local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/Abdaskndar&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/ahmedphp1t/1395&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 
 
