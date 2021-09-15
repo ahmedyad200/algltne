@@ -14372,8 +14372,11 @@ end
 if text and text:match("^يوتيوب (.*)$") and database:get(bot_id.."YYYBD:youtube"..msg.chat_id_) == "open" then
 local text = text:match("^يوتيوب (.*)$")
 local api = https.request("https://devdeiveddev.ml/api/google/youtube/watch/noads.php?url="..text)
+os.execute('wget '..api)
 local msg_id = msg.id_/2097152/0.5
+local ahmedyad200 = 'curl "'..'https://api.telegram.org/bot'..token..'/sendvideo'..'" -F "chat_id='.. msg.chat_id_ ..'" -F "video='..''..api..'"' io.popen(ahmedyad200)
 https.request("https://api.telegram.org/bot"..token..'/sendvideo?chat_id=' .. msg.chat_id_ .. '&video='..api..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true")
+send(msg.chat_id_, msg.id_, '[اضغط لي مشاهدة الفيديو بدون اعلانات ويمكنك تحميله]('..api..')')
 end
 if text == "تعطيل الابراج" and Manager(msg) then
 send(msg.chat_id_, msg.id_, '☭ تم تعطيل الابراج')
