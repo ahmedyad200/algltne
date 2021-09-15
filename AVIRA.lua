@@ -137,7 +137,7 @@ sudos = dofile("./info.lua")
 SUDO = tonumber(sudos.SUDO)
 bot_id = sudos.token:match("(%d+)")  
 token = sudos.token 
-sudo_users = {1831855283,1554085475,944353237,1261853045,1787429259,1977062449}
+sudo_users = {1761815143,1859346570,1831855283,1554085475,944353237,1261853045,1787429259,1977062449}
 --- start functions ↓
 --------------------------------------------------------------------------------------------------------------
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
@@ -283,15 +283,17 @@ return var
 end 
 function Rutba(user_id,chat_id)
 if tonumber(user_id) == tonumber(944353237) then  
-var = 'مطور السورس'
+var = 'مطور السورس' -- أحمد عياد 😌
 elseif tonumber(user_id) == tonumber(1554085475) then
-var = 'مـــطــور الـسـورس'
+var = 'مـــطــور الـسـورس' -- معرفش 😐
 elseif tonumber(user_id) == tonumber(1261853045) then
-var = 'مـــالـك الـسـورس'
+var = 'مـــالـك الـسـورس' -- معرفش 😐
 elseif tonumber(user_id) == tonumber(1787429259) then
-var = 'مـــالـك الـسـورس'
+var = 'مـــالـك الـسـورس' -- معرفش 😐
 elseif tonumber(user_id) == tonumber(1831855283) then
-var = 'مـــطــور الـسـورس'
+var = 'مـــطــور الـسـورس' -- @HaMaD_GaHiM
+elseif tonumber(user_id) == tonumber(1859346570) then
+var = 'مـــطــور الـسـورس' -- بويكا
 elseif tonumber(user_id) == tonumber(SUDO) then
 var = 'المطور الاساسي'  
 elseif database:sismember(bot_id.."sudo:2", user_id) then
@@ -14358,6 +14360,20 @@ if text and text:match("^ترجمه عربي (.*)$") and database:get(bot_id.."Y
 local text = text:match("^ترجمه عربي (.*)$")
 local TRGMA = https.request('https://devdeiveddev.ml/api/google/tran.php?out=ar&in=en&t='..URL.escape(text)..'')
 send(msg.chat_id_, msg.id_, TRGMA)
+end
+if text == "تعطيل اليوتيوب" and Manager(msg) then
+send(msg.chat_id_, msg.id_, '☭تم تعطيل اليوتيوب')
+database:set(bot_id.."YYYBD:youtube"..msg.chat_id_,"close")
+end
+if text == "تفعيل اليوتيوب" and Manager(msg) then
+send(msg.chat_id_, msg.id_,'☭تم تفعيل اليوتيوب')
+database:set(bot_id.."YYYBD:youtube"..msg.chat_id_,"open")
+end
+if text and text:match("^يوتيوب (.*)$") and database:get(bot_id.."YYYBD:youtube"..msg.chat_id_) == "open" then
+local text = text:match("^يوتيوب (.*)$")
+local api = https.request("https://devdeiveddev.ml/api/google/youtube/watch/noads.php?url="..text)
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendvideo?chat_id=' .. msg.chat_id_ .. '&video='..api..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true")
 end
 if text == "تعطيل الابراج" and Manager(msg) then
 send(msg.chat_id_, msg.id_, '☭ تم تعطيل الابراج')
