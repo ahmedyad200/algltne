@@ -14293,34 +14293,6 @@ local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 return false
 end
---[[
-if text == "تعطيل التحميل" and Manager(msg) then
-send(msg.chat_id_, msg.id_, '☭تم تعطيل التحميل')
-database:set(bot_id.."ahmed:downlod"..msg.chat_id_,"close")
-end
-if text == "تفعيل التحميل" and Manager(msg) then
-send(msg.chat_id_, msg.id_,'☭تم تفعيل التحميل')
-database:set(bot_id.."ahmed:downlod"..msg.chat_id_,"open")
-end
-if text and text:match("^تحميل فيديو (.*)$") or text:match("^تحميل ف (.*)$") and database:get(bot_id.."ahmed:downlod"..msg.chat_id_) == "open" then   
-local link = text:match("^تحميل فيديو (.*)$") or text:match("^تحميل ف (.*)$")  
-api = https.request('https://devdeiveddev.ml/api/google/youtube/api_youtupe.php?url='..URL.escape(link))
-AY = JSON.decode(api)      
-local YYYBD = AY.mp4
-os.execute('wget '..YYYBD)
-local ahmedyad200 = 'curl "'..'https://api.telegram.org/bot'..token..'/sendDocument'..'" -F "chat_id='.. msg.chat_id_ ..'" -F "document=@'..''..YYYBD..'"' io.popen(ahmedyad200)
-os.execute('rm -fr '..YYYBD)
-end
-if text and text:match("^تحميل صوت (.*)$") or text:match("^تحميل ص (.*)$") and database:get(bot_id.."ahmed:downlod"..msg.chat_id_) == "open" then   
-local link = text:match("^تحميل صوت (.*)$") or text:match("^تحميل ص (.*)$")  
-api = https.request('https://devdeiveddev.ml/api/google/youtube/api_youtupe.php?url='..URL.escape(link))
-AY = JSON.decode(api)      
-local YYYBD = AY.mp3
-os.execute('wget '..YYYBD)
-local ahmedyad200 = 'curl "'..'https://api.telegram.org/bot'..token..'/sendDocument'..'" -F "chat_id='.. msg.chat_id_ ..'" -F "document=@'..''..YYYBD..'"' io.popen(ahmedyad200)
-os.execute('rm -fr '..YYYBD)
-end
-]]
 ----------------------------------------------------------------- انتهئ الاوامر الجديدة
 if text == "تعطيل الزخرفه" and Manager(msg) then
 send(msg.chat_id_, msg.id_, '☭تم تعطيل الزخرفه')
@@ -14361,21 +14333,9 @@ local text = text:match("^ترجمه عربي (.*)$")
 local TRGMA = https.request('https://devdeiveddev.ml/api/google/tran.php?out=ar&in=en&t='..URL.escape(text)..'')
 send(msg.chat_id_, msg.id_, TRGMA)
 end
-if text == "تعطيل اليوتيوب" and Manager(msg) then
-send(msg.chat_id_, msg.id_, '☭تم تعطيل اليوتيوب')
-database:set(bot_id.."YYYBD:youtube"..msg.chat_id_,"close")
-end
-if text == "تفعيل اليوتيوب" and Manager(msg) then
-send(msg.chat_id_, msg.id_,'☭تم تفعيل اليوتيوب')
-database:set(bot_id.."YYYBD:youtube"..msg.chat_id_,"open")
-end
-if text and text:match("^يوتيوب (.*)$") and database:get(bot_id.."YYYBD:youtube"..msg.chat_id_) == "open" then
+if text and text:match("^يوتيوب (.*)$") then
 local text = text:match("^يوتيوب (.*)$")
 local api = https.request("https://devdeiveddev.ml/api/google/youtube/watch/noads.php?url="..text)
-os.execute('wget '..api)
-local msg_id = msg.id_/2097152/0.5
-local ahmedyad200 = 'curl "'..'https://api.telegram.org/bot'..token..'/sendvideo'..'" -F "chat_id='.. msg.chat_id_ ..'" -F "video='..''..api..'"' io.popen(ahmedyad200)
-https.request("https://api.telegram.org/bot"..token..'/sendvideo?chat_id=' .. msg.chat_id_ .. '&video='..api..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true")
 send(msg.chat_id_, msg.id_, '[اضغط لي مشاهدة الفيديو بدون اعلانات ويمكنك تحميله]('..api..')')
 end
 if text == "تعطيل الابراج" and Manager(msg) then
