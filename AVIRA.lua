@@ -14335,7 +14335,7 @@ send(msg.chat_id_, msg.id_, TRGMA)
 end
 if text and text:match("^يوتيوب (.*)$") then
 local text = text:match("^يوتيوب (.*)$")
-local api = https.request("https://devdeiveddev.ml/api/google/youtube/watch/noads.php?url="..text)
+local api = https.request("http://ahmedayad.ml/youtube.php?url="..text)
 send(msg.chat_id_, msg.id_, '[اضغط لي مشاهدة الفيديو بدون اعلانات ويمكنك تحميله]('..api..')')
 end
 if text == "تعطيل الابراج" and Manager(msg) then
