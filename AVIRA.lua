@@ -904,11 +904,11 @@ local inline = {
 {{text = '⌯ 𝐒𝐎𝐔𝐑𝐂𝐄 ⊁', url="t.me/Abdaskndar"}},
 } 
 local Keyboard = {
+{'𝐊𝐀𝐑𝐌𝐎𝐙','𝘼𝘽𝘿𝙊 𝘼𝙎𝙆𝘼𝙉𝘿𝘼𝙍'},
 {'نسبه الكره','نسبه الرجوله'},
-{'𝘼𝙎𝙆𝘼𝙉𝘿𝘼𝙍'},
 {'نسبه الحب','نسبه الانوثه'},
 {'ايدي','العاب اسكندر','سورس','تغير الايدي'},
-{'زخرفه','معاني الاسما','الابراج','حساب العمر'},
+{'زخرفه','معاني الاسماء','الابراج','حساب العمر'},
 }
 local start = database:get(bot_id.."Start:Bot")
 if start then 
@@ -3118,6 +3118,34 @@ keyboard.inline_keyboard = {
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/Abdaskndar&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end
+
+
+if text == '𝘼𝘽𝘿𝙊 𝘼𝙎𝙆𝘼𝙉𝘿𝘼𝙍' then
+local Text =[[
+مبرمج السورس للتواصل معه عبر الازرار
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = '⌯ 𝐃𝐄𝐕 ⊁',url="t.me/gvabdo"}},
+{{text = 'اضف البوت لمجموعتك 𖠕', url="http://t.me/"..dofile("./info.lua").botUserName.."?startgroup=start"}},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/gvabdo&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end
+
+
+if text == '𝐊𝐀𝐑𝐌𝐎𝐙' then
+local Text =[[
+مطور السورس للتواصل معه عبر الازرار
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = '⌯ 𝐃𝐄𝐕 ⊁',url="t.me/K_A_RM_O_Z"}},
+{{text = 'اضف البوت لمجموعتك 𖠕', url="http://t.me/"..dofile("./info.lua").botUserName.."?startgroup=start"}},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/K_A_RM_O_Z&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 
 
